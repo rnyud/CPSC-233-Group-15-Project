@@ -1,10 +1,14 @@
-
+/**
+ * 
+ * @author timof
+ *
+ */
 public class Income {
 	float weeklyPay;
 	float savings;
 	public static final int WORKING_WEEKS = 52;
 	
-	
+	//test
 	public Income() {}
 	
 	public Income(float pay) {
