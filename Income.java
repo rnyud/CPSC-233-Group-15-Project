@@ -10,7 +10,7 @@ public class Income {
 	
 	//test
 	public Income() {}
-	
+	//Additional changes
 	public Income(float pay) {
 		this.weeklyPay = pay;
 		savings = 0;
