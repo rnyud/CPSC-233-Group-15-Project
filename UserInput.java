@@ -1,5 +1,9 @@
 import java.util.Scanner;
-
+/**
+ * 
+ * @author Manpreet
+ *
+ */
 public class UserInput {
 	
 	public static void main(String[] args) {
