@@ -65,10 +65,10 @@ public class Income {
 		savingsAddition(returnOnInvestment);
 		
 	}
-	private float getWeeklyPay() {
+	public float getWeeklyPay() {
 		return weeklyPay;
 	}
-	private float getSavings() {
+	public float getSavings() {
 		return savings;
 	}
 }
