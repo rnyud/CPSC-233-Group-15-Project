@@ -1,4 +1,8 @@
-// test
+/**
+ * 
+ * @author Rayner
+ *
+ */
 public class RetirementPlan extends Income{
 	private int age;
 	private double investmentRate;
