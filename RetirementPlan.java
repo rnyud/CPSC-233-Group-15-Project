@@ -3,32 +3,37 @@
  * @author Rayner
  *
  */
-public class RetirementPlan extends Income{
+public class RetirementPlan {
 	private int age;
 	private double investmentRate;
 	private float yearlySavings;
+	private int retirementage;
+	private float initialSavings;
 	
 	public RetirementPlan() {
 		
 	}
 	
-	public RetirementPlan(int age, float savings, double investmentRate) {
+	public RetirementPlan(int age, float savings, double investmentRate, int retAge, float initSavings) {
 		this.age = age;
 		this.yearlySavings = savings;
 		this.investmentRate = investmentRate;
-		
+		this.retirementage = retAge;
+		this.initialSavings = initSavings;
 	}
 	
 	public RetirementPlan(RetirementPlan toCopy) {
 		this.age = toCopy.age;
 		this.yearlySavings = toCopy.yearlySavings;
 		this.investmentRate = toCopy.investmentRate;
+		this.retirementage = toCopy.retirementage;
+		this.initialSavings = toCopy.initialSavings;
 	}
 	
 	public void calculateYearlyGrowth() {
 		
 		int yearsToRetirement = calculateYearsToRetirement();
-		float initialSavings = 10000;
+		float initialSavings = this.initialSavings;
 		float initialSavingsForDisplay = initialSavings;
 		initialSavings = initialSavings + yearlySavings;
 		float yearAmount = growth(initialSavings);
@@ -36,7 +41,7 @@ public class RetirementPlan extends Income{
 		System.out.println("");
 		System.out.println("Year = " + 1 +  " |" + " Amount = $" + yearAmount);
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
-			if (yearCounter > 2) {
+			if (yearCounter >= 2) {
 			yearAmount = yearAmount + yearlySavings;}
 			yearAmount = growth(yearAmount);
 			System.out.println("Year = " + yearCounter + " |" + " Amount = $" + yearAmount);
@@ -61,20 +66,13 @@ public class RetirementPlan extends Income{
 	
 	
 	public int calculateYearsToRetirement() {
-		int retirementAge = 65;
-		int userChosenAge = 65; // placeholder
-		
-		if (userChosenAge == retirementAge) {
-			int yearsToRetirement = retirementAge - age;
-			return yearsToRetirement;
-		}
-		else {
-			int yearsToRetirement = userChosenAge - age;
+
+			int yearsToRetirement = this.retirementage - age;
 			return yearsToRetirement;
 		}
 		
 		
-	}
+	
 	
 	public float growth(float sum) {
 		float newAmount =  (float) ((sum) * (1 + (investmentRate)));

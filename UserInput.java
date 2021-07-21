@@ -59,8 +59,38 @@ public class UserInput {
 				 Budget budget = getUserInfo(scn,userChoice);
 				 budget.calculateIfPossible();
 				 System.out.println("In Budget");
-			 } else if(userChoice.equalsIgnoreCase("Retirement Plan")) {
+				 // retirement
+			 } 
+			 else if(userChoice.equalsIgnoreCase("Retirement Plan")) {
 				 System.out.println("In Retirement Plan");
+				 System.out.println("What is your current age?");
+				 int ageChoice = scn.nextInt();
+				 System.out.println("What is your expected retirement age?");
+				 int retAgeChoice = scn.nextInt();
+				 System.out.println("Enter your current amount of savings:");
+				 float initSavings = scn.nextFloat(); 
+				 System.out.println("Enter your expected monthly contributions:");
+				 float monthlySavings = scn.nextFloat();
+				 System.out.println("Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
+				 String riskChoice = scn.next();
+				 if (riskChoice.equalsIgnoreCase("low")) {
+					 double invRate = 0.03;
+					 RetirementPlan lowRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
+					 lowRisk.calculateYearlyGrowth();
+					 
+				 }
+				 else if (riskChoice.equalsIgnoreCase("medium")) {
+					 double invRate = 0.05;
+					 RetirementPlan medRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
+					 medRisk.calculateYearlyGrowth();
+					 
+				 }
+				 else if (riskChoice.equalsIgnoreCase("high")) {
+					 double invRate = 0.07;
+					 RetirementPlan highRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
+					 highRisk.calculateYearlyGrowth();
+					 
+				 }
 			 }
 			 System.out.println("What would you like to do next?(You can always answer quit to exit!)");
 			 userChoice = scn.nextLine();
