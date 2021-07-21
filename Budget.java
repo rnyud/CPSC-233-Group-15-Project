@@ -41,7 +41,7 @@ public class Budget {
 	}
 	
 	public Income getInFlow() {
-		return null;
+		return inFlow;
 	}
 
 	public double calculateNetFlow() {

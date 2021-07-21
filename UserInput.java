@@ -22,7 +22,7 @@ public class UserInput {
 	public static Income getUserIncome(Scanner scn) {
 		System.out.println("Please add your weekly income:");
 		float userIncome = scn.nextFloat();
-		System.out.println("Please add the amount you have saved:");
+		System.out.println("Please add the amount you have saved in your account:");
 		float userSaved = scn.nextFloat();
 		Income userInFlow = new Income(userIncome,userSaved);
 		return userInFlow;
