@@ -36,7 +36,7 @@ public class Budget {
 	}
 	// Waiting on copy method in Income and Expenses to encapsulate getters for outflow and inflow
 	public ExpenseList getOutFlow() {
-		return null;
+		return outFlow;
 		
 	}
 	
