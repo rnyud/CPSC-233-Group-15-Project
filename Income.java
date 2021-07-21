@@ -59,6 +59,18 @@ public class Income {
 		}
 	}
 	
+	public float weeklyIncome(ExpenseList allExpenses) {
+		float total = allExpenses.totalExpense();
+		float weekPay = getWeeklyPay() - total;
+		if(weekPay > 0){
+			savingsAddition(weekPay);
+		}
+		else if (weekPay < 0) {
+			savingsDeduction(weekPay);
+		}
+		return weekPay;
+	}
+	
 	//public void ReturnOnStableInvestment (float investment, float returnPeriod, float percentageGain) {
 		//savingsDeduction(investment);
 		//float returnOnInvestment = (investment*returnPeriod*percentageGain);
