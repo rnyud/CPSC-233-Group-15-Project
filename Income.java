@@ -48,7 +48,7 @@ public class Income {
 	//}
 	
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
-		float total = allExpenses.totalExpense();
+		float total = allExpenses.totalExpense()*4;
 		float monthlyIncome = getWeeklyPay()*4;
 		monthlyIncome-=total;
 		if(monthlyIncome > 0){
