@@ -4,8 +4,8 @@
  *
  */
 public class Income {
-	float weeklyPay;
-	float savings;
+	private float weeklyPay;
+	private float savings;
 	public static final int WORKING_WEEKS = 52;
 	
 	//test

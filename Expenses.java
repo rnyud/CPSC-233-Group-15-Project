@@ -1,12 +1,17 @@
-
+/**
+ * 
+ * @author timof
+ *
+ */
 public class Expenses {
-	String expenseName;
-	float expenseValue;
+	private String expenseName;
+	private float expenseValue;
 	
 	public Expenses(String name, float value) {
 		expenseName = name;
 		expenseValue = value;
 	}
+	
 
 	float getExpenseValue() {
 		return expenseValue;

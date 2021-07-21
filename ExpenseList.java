@@ -1,6 +1,10 @@
-
+/**
+ * 
+ * @author timof
+ *
+ */
 public class ExpenseList {
-	Expenses[] expenseList;
+	private Expenses[] expenseList;
 	//Expense List, contains all of the expenses in a list
 	public ExpenseList(int num) {
 		if(num<1) {
