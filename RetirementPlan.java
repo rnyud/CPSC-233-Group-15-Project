@@ -1,5 +1,5 @@
 // test
-public class RetirementPlan {
+public class RetirementPlan extends Income{
 	private int age;
 	private float income;
 	private double investmentRate;
@@ -24,7 +24,16 @@ public class RetirementPlan {
 		this.investmentRate = toCopy.investmentRate;
 	}
 	
-	public void calculateinvestmentReturn() {
+	public void calculateYearlyGrowth() {
+		int yearsToRetirement = calculateYearsToRetirement();
+		float initialSavings = 1000;
+		float total = 1000;
+		for (int yearCounter = 0; yearCounter <= yearsToRetirement; yearCounter ++ ) {
+			initialSavings = initialSavings + monthlySavings;
+			total = growth(initialSavings, yearsToRetirement);
+			yearsToRetirement --;
+			
+		}
 		
 	}
 	
@@ -43,5 +52,22 @@ public class RetirementPlan {
 		
 		
 	}
+	/**
+	 * This method returns the total amount at the retirement age using a compound interest formula.
+	 * @param initialSavings
+	 * @return retirementTotal
+	 */
+	public float totalGrowth(float initialSavings) {
+		int yearsToRetirement = calculateYearsToRetirement();
+		float retirementTotal = (float) Math.pow((float) ((initialSavings) * (1 + (investmentRate/1) )), yearsToRetirement);
+		return retirementTotal;
+		
+	}
+	
+	public float growth(float sum, int yearsToRetirement) {
+		float newAmount = (float) Math.pow((float) ((sum) * (1 + (investmentRate/1) )), yearsToRetirement);
+		return newAmount;
+	}
+	
 	
 }
