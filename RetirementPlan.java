@@ -40,7 +40,6 @@ public class RetirementPlan {
 		}
 		else {
 			this.age = 1;
-			
 		}
 	}
 
