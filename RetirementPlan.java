@@ -1,7 +1,6 @@
 // test
 public class RetirementPlan extends Income{
 	private int age;
-	private float income;
 	private double investmentRate;
 	private float monthlySavings;
 	
@@ -9,8 +8,7 @@ public class RetirementPlan extends Income{
 		
 	}
 	
-	public RetirementPlan(float income, int age, float savings, double investmentRate) {
-		this.income = income;
+	public RetirementPlan(int age, float savings, double investmentRate) {
 		this.age = age;
 		this.monthlySavings = savings;
 		this.investmentRate = investmentRate;
@@ -18,21 +16,23 @@ public class RetirementPlan extends Income{
 	}
 	
 	public RetirementPlan(RetirementPlan toCopy) {
-		this.income = toCopy.income;
 		this.age = toCopy.age;
 		this.monthlySavings = toCopy.monthlySavings;
 		this.investmentRate = toCopy.investmentRate;
 	}
 	
 	public void calculateYearlyGrowth() {
+		
 		int yearsToRetirement = calculateYearsToRetirement();
-		float initialSavings = 1000;
-		float total = 1000;
-		for (int yearCounter = 0; yearCounter <= yearsToRetirement; yearCounter ++ ) {
-			initialSavings = initialSavings + monthlySavings;
-			total = growth(initialSavings, yearsToRetirement);
-			yearsToRetirement --;
-			System.out.println("Year = " + yearCounter + "Amount = " + total);
+		float initialSavings = 10000;
+		initialSavings = initialSavings + monthlySavings;
+		float yearAmount = growth(initialSavings);
+		System.out.println(yearAmount);
+		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
+			if (yearCounter > 2) {
+			yearAmount = yearAmount + monthlySavings;}
+			yearAmount = growth(yearAmount);
+			System.out.println("Year = " + yearCounter + " Amount = $" + yearAmount);
 			
 		}
 		
@@ -65,8 +65,8 @@ public class RetirementPlan extends Income{
 		
 	}
 	
-	public float growth(float sum, int yearsToRetirement) {
-		float newAmount =  (float) ((sum) * (1 + (investmentRate/1) ));
+	public float growth(float sum) {
+		float newAmount =  (float) ((sum) * (1 + (investmentRate)));
 		return newAmount;
 	}
 	
