@@ -2,7 +2,7 @@
 public class RetirementPlan extends Income{
 	private int age;
 	private double investmentRate;
-	private float monthlySavings;
+	private float yearlySavings;
 	
 	public RetirementPlan() {
 		
@@ -10,14 +10,14 @@ public class RetirementPlan extends Income{
 	
 	public RetirementPlan(int age, float savings, double investmentRate) {
 		this.age = age;
-		this.monthlySavings = savings;
+		this.yearlySavings = savings;
 		this.investmentRate = investmentRate;
 		
 	}
 	
 	public RetirementPlan(RetirementPlan toCopy) {
 		this.age = toCopy.age;
-		this.monthlySavings = toCopy.monthlySavings;
+		this.yearlySavings = toCopy.yearlySavings;
 		this.investmentRate = toCopy.investmentRate;
 	}
 	
@@ -25,18 +25,36 @@ public class RetirementPlan extends Income{
 		
 		int yearsToRetirement = calculateYearsToRetirement();
 		float initialSavings = 10000;
-		initialSavings = initialSavings + monthlySavings;
+		float initialSavingsForDisplay = initialSavings;
+		initialSavings = initialSavings + yearlySavings;
 		float yearAmount = growth(initialSavings);
-		System.out.println(yearAmount);
+		System.out.println("Calculating your money's yearly growth...");
+		System.out.println("");
+		System.out.println("Year = " + 1 +  " |" + " Amount = $" + yearAmount);
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
 			if (yearCounter > 2) {
-			yearAmount = yearAmount + monthlySavings;}
+			yearAmount = yearAmount + yearlySavings;}
 			yearAmount = growth(yearAmount);
-			System.out.println("Year = " + yearCounter + " Amount = $" + yearAmount);
+			System.out.println("Year = " + yearCounter + " |" + " Amount = $" + yearAmount);
+			if (yearCounter == yearsToRetirement) {
+				System.out.println("------------------------------------------");
+				System.out.println("Based on your chosen risk level and contributions...");
+				System.out.println("");
+				System.out.println("At age " + (yearCounter + age) + ", you could have a total of $" + yearAmount + " saved for retirement");
+				float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
+				System.out.println("");
+				System.out.println("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
+				System.out.println("Total compound interest/growth = $" + (yearAmount - totalContribution));
+				System.out.println("");
+				System.out.println("Consider contributing more savings for a larger amount saved at retirement.");
+				}
+				
+			}
 			
 		}
+
 		
-	}
+	
 	
 	public int calculateYearsToRetirement() {
 		int retirementAge = 65;
@@ -53,21 +71,22 @@ public class RetirementPlan extends Income{
 		
 		
 	}
-	/**
-	 * This method returns the total amount at the retirement age using a compound interest formula.
-	 * @param initialSavings
-	 * @return retirementTotal
-	 */
-	public float totalGrowth(float initialSavings) {
-		int yearsToRetirement = calculateYearsToRetirement();
-		float retirementTotal = (float) ((initialSavings) * Math.pow((1 + (investmentRate)), yearsToRetirement));
-		return retirementTotal;
-		
-	}
 	
 	public float growth(float sum) {
 		float newAmount =  (float) ((sum) * (1 + (investmentRate)));
 		return newAmount;
+	}
+	
+	public float totalContributions(int yearsToRetirement, float initialSavings) {
+		float totalContribution = initialSavings + (yearlySavings * yearsToRetirement);
+		return totalContribution;
+		
+		
+	}
+	
+	public float calculateNeededAmountAtRetirement() {
+		return 0;
+		
 	}
 	
 	
