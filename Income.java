@@ -59,12 +59,12 @@ public class Income {
 		}
 	}
 	
-	public void ReturnOnStableInvestment (float investment, float returnPeriod, float percentageGain) {
-		savingsDeduction(investment);
-		float returnOnInvestment = (investment*returnPeriod*percentageGain);
-		savingsAddition(returnOnInvestment);
+	//public void ReturnOnStableInvestment (float investment, float returnPeriod, float percentageGain) {
+		//savingsDeduction(investment);
+		//float returnOnInvestment = (investment*returnPeriod*percentageGain);
+		//savingsAddition(returnOnInvestment);
 		
-	}
+	//}
 	public float getWeeklyPay() {
 		return weeklyPay;
 	}
