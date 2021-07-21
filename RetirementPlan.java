@@ -32,6 +32,7 @@ public class RetirementPlan extends Income{
 			initialSavings = initialSavings + monthlySavings;
 			total = growth(initialSavings, yearsToRetirement);
 			yearsToRetirement --;
+			System.out.println("Year = " + yearCounter + "Amount = " + total);
 			
 		}
 		
@@ -59,15 +60,16 @@ public class RetirementPlan extends Income{
 	 */
 	public float totalGrowth(float initialSavings) {
 		int yearsToRetirement = calculateYearsToRetirement();
-		float retirementTotal = (float) Math.pow((float) ((initialSavings) * (1 + (investmentRate/1) )), yearsToRetirement);
+		float retirementTotal = (float) ((initialSavings) * Math.pow((1 + (investmentRate)), yearsToRetirement));
 		return retirementTotal;
 		
 	}
 	
 	public float growth(float sum, int yearsToRetirement) {
-		float newAmount = (float) Math.pow((float) ((sum) * (1 + (investmentRate/1) )), yearsToRetirement);
+		float newAmount =  (float) ((sum) * (1 + (investmentRate/1) ));
 		return newAmount;
 	}
+	
 	
 	
 }
