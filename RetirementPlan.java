@@ -30,6 +30,73 @@ public class RetirementPlan {
 		this.initialSavings = toCopy.initialSavings;
 	}
 	
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int Age) {
+		if (Age >= 1) {
+		this.age = Age;
+		}
+		else {
+			this.age = 1;
+			
+		}
+	}
+
+	public double getInvestmentRate() {
+		return investmentRate;
+	}
+
+	public void setInvestmentRate(double investmentRate) {
+		if (investmentRate >= 0) {
+		this.investmentRate = investmentRate;
+		}
+		else {
+			this.investmentRate = 0;
+			
+		}
+	}
+
+	public float getYearlySavings() {
+		return yearlySavings;
+	}
+
+	public void setYearlySavings(float yearlySavings) {
+		if (yearlySavings >= 0) {
+		this.yearlySavings = yearlySavings;
+		}
+		else {
+			this.yearlySavings = 0;
+		}
+	}
+
+	public int getRetirementage() {
+		return retirementage;
+	}
+
+	public void setRetirementage(int retirementage) {
+		if(retirementage >= age) {
+		this.retirementage = retirementage;
+		}
+		else {
+			this.retirementage = age;
+		}
+	}
+
+	public float getInitialSavings() {
+		return initialSavings;
+	}
+
+	public void setInitialSavings(float initialSavings) {
+		if (initialSavings >= 0) {
+		this.initialSavings = initialSavings;
+		}
+		else {
+			this.initialSavings = 0;
+		}
+	}
+
 	public void calculateYearlyGrowth() {
 		
 		int yearsToRetirement = calculateYearsToRetirement();
@@ -66,14 +133,11 @@ public class RetirementPlan {
 	
 	
 	public int calculateYearsToRetirement() {
-
 			int yearsToRetirement = this.retirementage - age;
 			return yearsToRetirement;
 		}
 		
 		
-	
-	
 	public float growth(float sum) {
 		float newAmount =  (float) ((sum) * (1 + (investmentRate)));
 		return newAmount;
