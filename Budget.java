@@ -5,14 +5,14 @@
  */
 public class Budget {
 	private double goal;
-	private Expenses outFlow;
+	private ExpenseList outFlow;
 	private Income inFlow;
 	private double timeToAchieve;
 	
 	/*
 	 * Constructors
 	 */
-	public Budget(Expenses outFlow,Income inFlow) {
+	public Budget(ExpenseList outFlow,Income inFlow) {
 		this.outFlow = outFlow;
 		this.inFlow = inFlow;
 	}
@@ -23,6 +23,10 @@ public class Budget {
 	/*
 	 * Methods
 	 */
+	public void setTimeToAchieve(double expectedTimeFrame) {
+		this.timeToAchieve = expectedTimeFrame;
+
+	}
 	public double getGoal() {
 		return goal;
 	}
@@ -31,7 +35,7 @@ public class Budget {
 		this.goal = moneyGoal;
 	}
 	// Waiting on copy method in Income and Expenses to encapsulate getters for outflow and inflow
-	public Expenses getOutFlow() {
+	public ExpenseList getOutFlow() {
 		return null;
 		
 	}
@@ -39,14 +43,25 @@ public class Budget {
 	public Income getInFlow() {
 		return null;
 	}
-	
-	//Waiting on Expenses and Income classes to complete
 
-	public double calculateAmountLeft() {
-		return 0;
+	public double calculateNetFlow() {
+		return inFlow.getWeeklyPay() + outFlow.totalExpense();
 	}
 	
-	public double calculateTimeToAchieveGoal() {
-		return 0;
+	public double calculateWeeklyAmount() {
+		return (inFlow.getSavings() + (calculateNetFlow() * timeToAchieve));
+	}
+	public double getRemainingWeekly() {
+		return (goal/timeToAchieve) - calculateWeeklyAmount();
+	}
+	public void calculateIfPossible() {
+		System.out.println(calculateWeeklyAmount()/goal);
+		if(calculateWeeklyAmount()/goal < 1) {
+			System.out.println("You won't be able to reach your goal!");
+			System.out.println("You would only reach " + (int)((calculateWeeklyAmount()/goal)*100) 
+			+ " percent of the way there!");
+			System.out.println("You would need to increase your income or decrease your spending by " 
+			+ getRemainingWeekly() + " every week!");
+		} 
 	}
 }
