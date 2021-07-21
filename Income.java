@@ -22,23 +22,23 @@ public class Income {
 	}
 	
 	public Income(Income incomeCopy) {
-		this.weeklyPay = incomeCopy.weeklyPay;
-		this.savings = incomeCopy.savings;
+		this.weeklyPay = incomeCopy.getWeeklyPay();
+		this.savings = incomeCopy.getSavings();
 	}
 	
 	
 	public float annualIncome() {
-		float annualPay = weeklyPay*WORKING_WEEKS;
+		float annualPay = getWeeklyPay()*WORKING_WEEKS;
 		
 		return annualPay;
 	}
 	
 	public void savingsDeduction(float amount) {
-		savings-=amount;
+		savings = getSavings() - amount;
 	}
 	
 	public void savingsAddition(float amount) {
-		savings+=amount;
+		savings = getSavings() + amount;
 	}
 	
 	//public float monthlySavings(float percentPay) {
@@ -48,8 +48,8 @@ public class Income {
 	//}
 	
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
-		float total = allExpenses.totalExpense();
-		float monthlyIncome = weeklyPay*4;
+		float total = allExpenses.totalExpense()*4;
+		float monthlyIncome = getWeeklyPay()*4;
 		monthlyIncome-=total;
 		if(monthlyIncome > 0){
 			savingsAddition(monthlyIncome);
@@ -64,5 +64,11 @@ public class Income {
 		float returnOnInvestment = (investment*returnPeriod*percentageGain);
 		savingsAddition(returnOnInvestment);
 		
+	}
+	public float getWeeklyPay() {
+		return weeklyPay;
+	}
+	public float getSavings() {
+		return savings;
 	}
 }

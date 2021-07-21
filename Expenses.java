@@ -13,11 +13,11 @@ public class Expenses {
 	}
 	
 
-	float getExpenseValue() {
+	public float getExpenseValue() {
 		return expenseValue;
 	}
 
-	String getExpenseName() {
+	public String getExpenseName() {
 		return expenseName;
 	}
 	

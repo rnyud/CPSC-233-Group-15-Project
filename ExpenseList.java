@@ -30,7 +30,7 @@ public class ExpenseList {
 		return total;
 	}
 
-	Expenses[] getExpenseList() {
+	public Expenses[] getExpenseList() {
 		return expenseList;
 	}
 
