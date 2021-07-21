@@ -45,15 +45,17 @@ public class Budget {
 	}
 
 	public double calculateNetFlow() {
-		return inFlow.getWeeklyPay() + outFlow.totalExpense();
+		return inFlow.getWeeklyPay() - outFlow.totalExpense();
 	}
 	
 	public double calculateWeeklyAmount() {
 		return (inFlow.getSavings() + (calculateNetFlow() * timeToAchieve));
 	}
+	
 	public double getRemainingWeekly() {
 		return (goal/timeToAchieve) - calculateWeeklyAmount();
 	}
+	
 	public void calculateIfPossible() {
 		System.out.println(calculateWeeklyAmount()/goal);
 		if(calculateWeeklyAmount()/goal < 1) {
@@ -63,5 +65,12 @@ public class Budget {
 			System.out.println("You would need to increase your income or decrease your spending by " 
 			+ getRemainingWeekly() + " every week!");
 		} 
+	}
+	
+	public void showWeeklyGain() {
+		for(int i = 0; i < timeToAchieve; i++) {
+			System.out.println("Week " + i + ": | Amount gained = " + 
+		(inFlow.getSavings() + (calculateNetFlow() * i)));
+		}
 	}
 }

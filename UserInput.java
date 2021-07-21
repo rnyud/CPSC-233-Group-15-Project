@@ -29,6 +29,7 @@ public class UserInput {
 	}
 	
 	public static ExpenseList getExpenses(Scanner scn,String userChoice) {
+		 
 		 System.out.println("Please add your weekly expenses(Write done once your finished)");
 		 ArrayList<Expenses> expenses = new ArrayList<Expenses>();
 		 int expenseListLength = 0;
@@ -56,10 +57,11 @@ public class UserInput {
 		String userChoice = scn.nextLine();
 		while(!userChoice.equalsIgnoreCase("quit")){
 			 if(userChoice.equalsIgnoreCase("Budget")) {
+				 System.out.println("In Budget");
 				 Budget budget = getUserInfo(scn,userChoice);
 				 budget.calculateIfPossible();
-				 System.out.println("In Budget");
-				 // retirement
+				 budget.showWeeklyGain();
+			 // retirement
 			 } 
 			 else if(userChoice.equalsIgnoreCase("Retirement Plan")) {
 				 System.out.println("In Retirement Plan");
