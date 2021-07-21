@@ -6,7 +6,8 @@
 public class Income {
 	private float weeklyPay;
 	private float savings;
-	public static final int WORKING_WEEKS = 52;
+	public static final int WORKING_WEEKS = 48;
+	public static final int AVERAGE_WEEKS_IN_MONTH = 4;
 	
 	//test
 	public Income() {}
@@ -48,8 +49,8 @@ public class Income {
 	//}
 	
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
-		float total = allExpenses.totalExpense()*4;
-		float monthlyIncome = getWeeklyPay()*4;
+		float total = allExpenses.totalExpense()*AVERAGE_WEEKS_IN_MONTH;
+		float monthlyIncome = getWeeklyPay()*AVERAGE_WEEKS_IN_MONTH;
 		monthlyIncome-=total;
 		if(monthlyIncome > 0){
 			savingsAddition(monthlyIncome);
