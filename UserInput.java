@@ -85,6 +85,7 @@ public class UserInput {
 	 * @param scn, scanner
 	 */
 	public static void getRetirement(Scanner scn) {
+		// Uses an instance of Income to feed into RetirementPlan
 		 Income incForRetirementPlan = getUserIncome(scn);
 		 float inc = incForRetirementPlan.annualIncome();
 		 float initSavings = incForRetirementPlan.getSavings();
