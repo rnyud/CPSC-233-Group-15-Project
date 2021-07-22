@@ -88,6 +88,7 @@ public class UserInput {
 		 Income incForRetirementPlan = getUserIncome(scn);
 		 float inc = incForRetirementPlan.annualIncome();
 		 float initSavings = incForRetirementPlan.getSavings();
+		 // These next few lines of code print to the console, and ask the users questions in which the answers are stored as variables
 		 System.out.println("What is your current age?");
 		 int ageChoice = scn.nextInt();
 		 System.out.println("What is your expected retirement age?");
@@ -96,6 +97,8 @@ public class UserInput {
 		 float monthlySavings = scn.nextFloat();
 		 System.out.println("What is your risk tolerance: Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
 		 String riskChoice = scn.next();
+		 // Three conditionals based on the users chosen risk tolerance
+		 // Creates a new instance of RetirementPlan to show the data
 		 if (riskChoice.equalsIgnoreCase("low")) {
 			 double invRate = 0.03;
 			 RetirementPlan lowRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
