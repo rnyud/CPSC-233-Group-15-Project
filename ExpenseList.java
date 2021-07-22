@@ -5,7 +5,11 @@
  */
 public class ExpenseList {
 	private Expenses[] expenseList;
-	//Expense List, contains all of the expenses in a list
+	
+	/**
+	 * The constructor expense list, takes the number of expenses.
+	 * @param num The number of expenses.
+	 */
 	public ExpenseList(int num) {
 		if(num<1) {
 			num = 1;
@@ -13,6 +17,10 @@ public class ExpenseList {
 		expenseList = new Expenses[num];
 	}
 	
+	/**
+	 * Adds an expense to the expense list.
+	 * @param expense The expense to be added to the list.
+	 */
 	public void addExpense(Expenses expense) {
 		if(expense!=null) {
 			int index = 0;
@@ -22,6 +30,10 @@ public class ExpenseList {
 		}
 	}
 	
+	/**
+	 * The sum of all the expense values within the list.
+	 * @return The total expense value of all the expenses.
+	 */
 	public float totalExpense() {
 		float total = 0;
 		for(Expenses expense : getExpenseList()) {
@@ -30,6 +42,10 @@ public class ExpenseList {
 		return total;
 	}
 
+	/**
+	 * A getter for the expense list.
+	 * @return The expense list.
+	 */
 	public Expenses[] getExpenseList() {
 		return expenseList;
 	}
