@@ -54,6 +54,7 @@ public class Income {
 		float annualPay = getWeeklyPay()*WORKING_WEEKS;
 		return annualPay;
 	}
+	
 	/**
 	 * Deducts a certain amount from the savings variable
 	 * @param amount Amount deducted from savings
@@ -61,6 +62,7 @@ public class Income {
 	public void savingsDeduction(float amount) {
 		savings = getSavings() - amount;
 	}
+	
 	/**
 	 * Adds a certain amount to the savings variable
 	 * @param amount Amount added to savings
@@ -68,6 +70,7 @@ public class Income {
 	public void savingsAddition(float amount) {
 		savings = getSavings() + amount;
 	}
+	
 	/**
 	 * Calculates the resulting savings after factoring in monthly pay and expenses
 	 * @param allExpenses The list of Expenses for a given week
@@ -83,6 +86,7 @@ public class Income {
 			savingsDeduction(monthlyIncome);
 		}
 	}
+	
 	/**
 	 * Calculates the resulting savings after factoring in weekly pay and expenses, and returns 
 	 * the income for the week with the expenses subtracted
