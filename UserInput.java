@@ -53,7 +53,7 @@ public class UserInput {
 	
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		System.out.println("Hello, what would you like to begin with?");
+		System.out.println("Hello, what would you like to begin with?\n(Budget, Retirement Plan, or Quit)");
 		String userChoice = scn.nextLine();
 		while(!userChoice.equalsIgnoreCase("quit")){
 			 if(userChoice.equalsIgnoreCase("Budget")) {
