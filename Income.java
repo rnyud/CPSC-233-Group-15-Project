@@ -76,6 +76,13 @@ public class Income {
 	 * @param allExpenses The list of Expenses for a given week.
 	 */
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
+		// This method takes the total of every weekly expense, multiplies by the amount of weeks
+		// in a month, and subtracts it from the user's income to see if they came out even,
+		// or not. If they spent less than they made, that surplus is added to savings.
+		// If they spent more than they made, the surplus is subtracted from savings,
+		// indicating that the user had to dip into their savings for all of their expenses.
+		// In future iterations, will consider making certain expenses optional and others
+		// mandatory.
 		float total = allExpenses.totalExpense()*AVERAGE_WEEKS_IN_MONTH;
 		float monthlyIncome = getWeeklyPay()*AVERAGE_WEEKS_IN_MONTH;
 		monthlyIncome-=total;
@@ -94,6 +101,8 @@ public class Income {
 	 * @return The amount earned or lost after subtracting expenses from a week's pay.
 	 */
 	public float weeklyIncome(ExpenseList allExpenses) {
+		// This method behaves in a similar way to savingsAfterMonthlyExpenses,
+		// but works for a given week as opposed to a month.
 		float total = allExpenses.totalExpense();
 		float weekPay = getWeeklyPay() - total;
 		if(weekPay > 0){

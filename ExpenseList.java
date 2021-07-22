@@ -1,7 +1,7 @@
 /**
  * 
  * @author timof
- *
+ * 
  */
 public class ExpenseList {
 	private Expenses[] expenseList;
@@ -36,6 +36,8 @@ public class ExpenseList {
 	 */
 	public float totalExpense() {
 		float total = 0;
+		// Here, the method iterates through every single expense within ExpenseList, 
+		// adds it to the total variable, and then returns it.
 		for(Expenses expense : getExpenseList()) {
 			total+=expense.getExpenseValue();
 		}
