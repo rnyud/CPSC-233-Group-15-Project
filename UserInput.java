@@ -59,7 +59,6 @@ public class UserInput {
 			 if(userChoice.equalsIgnoreCase("Budget")) {
 				 System.out.println("In Budget");
 				 Budget budget = getUserInfo(scn,userChoice);
-				 budget.calculateIfPossible();
 				 budget.showWeeklyGain();
 			 // retirement
 			 } 

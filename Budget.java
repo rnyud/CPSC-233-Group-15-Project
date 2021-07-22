@@ -53,24 +53,36 @@ public class Budget {
 	}
 	
 	public double getRemainingWeekly() {
-		return (goal/timeToAchieve) - calculateWeeklyAmount();
+		return goal - calculateWeeklyAmount();
 	}
 	
-	public void calculateIfPossible() {
-		System.out.println(calculateWeeklyAmount()/goal);
-		if(calculateWeeklyAmount()/goal < 1) {
+	public void printResult(Boolean achieved, int weekAchieved) {
+		if(!achieved) {
 			System.out.println("You won't be able to reach your goal!");
 			System.out.println("You would only reach " + (int)((calculateWeeklyAmount()/goal)*100) 
 			+ " percent of the way there!");
 			System.out.println("You would need to increase your income or decrease your spending by " 
 			+ getRemainingWeekly() + " every week!");
-		} 
+		} else {
+			System.out.println("You will achieve your goal by Week:" + weekAchieved);
+		}
 	}
 	
 	public void showWeeklyGain() {
+		int weekAchieved = -1;
+		System.out.println("Calculating amount gained over "+ (int)timeToAchieve +" weeks...");
 		for(int i = 0; i < timeToAchieve; i++) {
-			System.out.println("Week " + i + ": | Amount gained = " + 
-		(inFlow.getSavings() + (calculateNetFlow() * i)));
+			inFlow.weeklyIncome(outFlow);
+			if(inFlow.getSavings() >= goal && weekAchieved == -1) {
+				weekAchieved = i;
+			}
+			System.out.println("Week " + i + ": | Amount gained as savings = " + 
+		    inFlow.getSavings());
+		}
+		if(weekAchieved > -1) {
+			printResult(true,weekAchieved);
+		} else {
+			printResult(false,0);
 		}
 	}
 }
