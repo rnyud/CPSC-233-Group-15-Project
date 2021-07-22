@@ -7,47 +7,71 @@ public class Income {
 	private float weeklyPay;
 	private float savings;
 	public static final int WORKING_WEEKS = 48;
+	//Working weeks was extrapolated from paid time off, vacation days
+	//and sick leave.
 	public static final int AVERAGE_WEEKS_IN_MONTH = 4;
 	
-	//test
+	/**
+	 * Default constructor
+	 */
 	public Income() {}
-	//Additional changes
+	
+	/**
+	 * Constructor if object called with payment but no savings.
+	 * @param pay The amount the user receives her week.
+	 * Savings set to zero.
+	 */
 	public Income(float pay) {
 		this.weeklyPay = pay;
 		savings = 0;
 	}
 	
+	/**
+	 * Constructor for when the object is called with pay and savings.
+	 * @param pay The user's pay per week.
+	 * @param saved The user's savings.
+	 */
 	public Income(float pay, float saved) {
 		this.weeklyPay = pay;
 		this.savings = saved;
 	}
 	
+	/**
+	 * The copy constructor.
+	 * @param incomeCopy The object to copy.
+	 */
 	public Income(Income incomeCopy) {
 		this.weeklyPay = incomeCopy.getWeeklyPay();
 		this.savings = incomeCopy.getSavings();
 	}
 	
-	
+	/**
+	 * Calculates the pay per year
+	 * @return The annual pay
+	 * Multiplies the weekly pay by the constant of working weeks in a year.
+	 */
 	public float annualIncome() {
 		float annualPay = getWeeklyPay()*WORKING_WEEKS;
-		
 		return annualPay;
 	}
-	
+	/**
+	 * Deducts a certain amount from the savings variable
+	 * @param amount Amount deducted from savings
+	 */
 	public void savingsDeduction(float amount) {
 		savings = getSavings() - amount;
 	}
-	
+	/**
+	 * Adds a certain amount to the savings variable
+	 * @param amount Amount added to savings
+	 */
 	public void savingsAddition(float amount) {
 		savings = getSavings() + amount;
 	}
-	
-	//public float monthlySavings(float percentPay) {
-		//float monthSaved = weeklyPay*percentPay*4;
-		//savings+=monthSaved;
-		//return monthSaved;
-	//}
-	
+	/**
+	 * Calculates the resulting savings after factoring in monthly pay and expenses
+	 * @param allExpenses The list of Expenses for a given week
+	 */
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
 		float total = allExpenses.totalExpense()*AVERAGE_WEEKS_IN_MONTH;
 		float monthlyIncome = getWeeklyPay()*AVERAGE_WEEKS_IN_MONTH;
@@ -59,7 +83,12 @@ public class Income {
 			savingsDeduction(monthlyIncome);
 		}
 	}
-	
+	/**
+	 * Calculates the resulting savings after factoring in weekly pay and expenses, and returns 
+	 * the income for the week with the expenses subtracted
+	 * @param allExpenses
+	 * @return The amount earned or lost after subtracting expenses from a week's pay
+	 */
 	public float weeklyIncome(ExpenseList allExpenses) {
 		float total = allExpenses.totalExpense();
 		float weekPay = getWeeklyPay() - total;
@@ -72,15 +101,18 @@ public class Income {
 		return weekPay;
 	}
 	
-	//public void ReturnOnStableInvestment (float investment, float returnPeriod, float percentageGain) {
-		//savingsDeduction(investment);
-		//float returnOnInvestment = (investment*returnPeriod*percentageGain);
-		//savingsAddition(returnOnInvestment);
-		
-	//}
+	/**
+	 * A getter for weekly pay
+	 * @return The weekly income for the user
+	 */
 	public float getWeeklyPay() {
 		return weeklyPay;
 	}
+	
+	/**
+	 * A getter for the total savings
+	 * @return The user's savings
+	 */
 	public float getSavings() {
 		return savings;
 	}
