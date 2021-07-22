@@ -18,7 +18,7 @@ public class UserInput {
 	public static Budget getUserInfo(Scanner scn, String userChoice) {
 		 ExpenseList expenses = getExpenses(scn,userChoice);
 		 Income userInFlow = getUserIncome(scn);
-		 System.out.println("Please enter your savings goal/ the amount you want to save:");
+		 System.out.println("Please enter your savings goal(the amount you want to save):");
 		 double goal = scn.nextDouble();
 		 System.out.println("Please enter the number of weeks you want to complete this goal by:");
 		 int timeLeft = scn.nextInt();
@@ -51,14 +51,13 @@ public class UserInput {
 	 * @return userExpenses, a new ExpenseList object filled with Expenses
 	 */
 	public static ExpenseList getExpenses(Scanner scn,String userChoice) {
-		 System.out.println("Please add your weekly expenses(Write done once your finished)");
+		 System.out.println("Please add your weekly expenses(Write 'done' once your finished)");
 		 ArrayList<Expenses> expenses = new ArrayList<Expenses>();
 		 int expenseListLength = 0;
 		 while(!userChoice.equalsIgnoreCase("done")) {
-			 System.out.println("Please add the name of this expense, followed by the amount of this expense(with a comma):");
+			 System.out.println("Please add the name of this expense, followed by the amount of this expense(with a comma between the values):");
 			 userChoice = scn.nextLine();
 				 if(!userChoice.equalsIgnoreCase("done")) {
-					 System.out.println(userChoice.split(",")[1]);
 					 float value = Float.valueOf(userChoice.split(",")[1]);
 					 Expenses expense = new Expenses(userChoice.split(",")[0],value);
 					 expenses.add(expense);
@@ -66,8 +65,13 @@ public class UserInput {
 				 }
 			 }
 		 ExpenseList userExpenses = new ExpenseList(expenseListLength);
-		 for(Expenses expense: expenses) {
+		 if(expenseListLength == 0) {
+			 Expenses expense = new Expenses("None",0);
 			 userExpenses.addExpense(expense);
+		 } else {
+			 for(Expenses expense: expenses) {
+				 userExpenses.addExpense(expense);
+			 }
 		 }
 		 return userExpenses;
 	}
@@ -124,8 +128,10 @@ public class UserInput {
 		System.out.println("What would you like to begin with?\n(Budget, Retirement Plan, or Quit)");
 		String userChoice = scn.nextLine();
 		while(!userChoice.equalsIgnoreCase("quit")){
+			// budget
 			 if(userChoice.equalsIgnoreCase("Budget")) {
-				 System.out.println("In Budget");
+				 System.out.println("Budget:\n\nThis feature will allow you to create a budget to achieve a goal you have, based on your\n"
+				 		+ "inputted information, such as your income, expenses, goal, and the time frame you plan to achieve your goal.\n");
 				 Budget budget = getUserInfo(scn,userChoice);
 				 budget.showWeeklyGain();
 			 // retirement
