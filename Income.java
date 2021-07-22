@@ -12,7 +12,7 @@ public class Income {
 	public static final int AVERAGE_WEEKS_IN_MONTH = 4;
 	
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public Income() {}
 	
@@ -46,8 +46,8 @@ public class Income {
 	}
 	
 	/**
-	 * Calculates the pay per year
-	 * @return The annual pay
+	 * Calculates the pay per year.
+	 * @return The annual pay.
 	 * Multiplies the weekly pay by the constant of working weeks in a year.
 	 */
 	public float annualIncome() {
@@ -56,24 +56,24 @@ public class Income {
 	}
 	
 	/**
-	 * Deducts a certain amount from the savings variable
-	 * @param amount Amount deducted from savings
+	 * Deducts a certain amount from the savings variable.
+	 * @param amount Amount deducted from savings.
 	 */
 	public void savingsDeduction(float amount) {
 		savings = getSavings() - amount;
 	}
 	
 	/**
-	 * Adds a certain amount to the savings variable
-	 * @param amount Amount added to savings
+	 * Adds a certain amount to the savings variable.
+	 * @param amount Amount added to savings.
 	 */
 	public void savingsAddition(float amount) {
 		savings = getSavings() + amount;
 	}
 	
 	/**
-	 * Calculates the resulting savings after factoring in monthly pay and expenses
-	 * @param allExpenses The list of Expenses for a given week
+	 * Calculates the resulting savings after factoring in monthly pay and expenses.
+	 * @param allExpenses The list of Expenses for a given week.
 	 */
 	public void savingsAfterMonthlyExpenses(ExpenseList allExpenses) {
 		float total = allExpenses.totalExpense()*AVERAGE_WEEKS_IN_MONTH;
@@ -89,9 +89,9 @@ public class Income {
 	
 	/**
 	 * Calculates the resulting savings after factoring in weekly pay and expenses, and returns 
-	 * the income for the week with the expenses subtracted
+	 * the income for the week with the expenses subtracted.
 	 * @param allExpenses
-	 * @return The amount earned or lost after subtracting expenses from a week's pay
+	 * @return The amount earned or lost after subtracting expenses from a week's pay.
 	 */
 	public float weeklyIncome(ExpenseList allExpenses) {
 		float total = allExpenses.totalExpense();
@@ -106,16 +106,16 @@ public class Income {
 	}
 	
 	/**
-	 * A getter for weekly pay
-	 * @return The weekly income for the user
+	 * A getter for weekly pay.
+	 * @return The weekly income for the user.
 	 */
 	public float getWeeklyPay() {
 		return weeklyPay;
 	}
 	
 	/**
-	 * A getter for the total savings
-	 * @return The user's savings
+	 * A getter for the total savings.
+	 * @return The user's savings.
 	 */
 	public float getSavings() {
 		return savings;
