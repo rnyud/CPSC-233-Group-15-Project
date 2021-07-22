@@ -6,6 +6,15 @@ import java.util.Scanner;
  *
  */
 public class UserInput {
+	/**
+	 * This function uses the getExpenses and getUserIncome methods to create a new budget, and then
+	 * using user input, sets a new goal for this budget and a time by which the user wants to complete
+	 * this goal by.
+	 * 
+	 * @param scn, Scanner object
+	 * @param userChoice, String representing a users input
+	 * @return userBudget, a new Budget created using user input
+	 */
 	public static Budget getUserInfo(Scanner scn, String userChoice) {
 		 ExpenseList expenses = getExpenses(scn,userChoice);
 		 Income userInFlow = getUserIncome(scn);
@@ -18,7 +27,13 @@ public class UserInput {
 		 userBudget.setTimeToAchieve(timeLeft);
 		 return userBudget;
 	}
-	
+	/**
+	 * This function creates a new Income object which is created using user input
+	 * for the parameters representing a users income and their savings.
+	 * 
+	 * @param scn, scanner object
+	 * @return userInFlow, a Income object representing a users weekly income and savings
+	 */
 	public static Income getUserIncome(Scanner scn) {
 		System.out.println("Please add your weekly income:");
 		float userIncome = scn.nextFloat();
@@ -27,9 +42,15 @@ public class UserInput {
 		Income userInFlow = new Income(userIncome,userSaved);
 		return userInFlow;
 	}
-	
+	/**
+	 * This function creates an ExpenseList object and this ExpenseList is filled with
+	 * newly created Expense objects that are given a name and a value based on the users input.
+	 * 
+	 * @param scn, scanner object
+	 * @param userChoice, String representing a users input
+	 * @return userExpenses, a new ExpenseList object filled with Expenses
+	 */
 	public static ExpenseList getExpenses(Scanner scn,String userChoice) {
-		 
 		 System.out.println("Please add your weekly expenses(Write done once your finished)");
 		 ArrayList<Expenses> expenses = new ArrayList<Expenses>();
 		 int expenseListLength = 0;
