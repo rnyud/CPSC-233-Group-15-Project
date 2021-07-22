@@ -15,11 +15,39 @@ public class RetirementPlan {
 	}
 	
 	public RetirementPlan(int age, float savings, double investmentRate, int retAge, float initSavings) {
-		this.age = age;
-		this.yearlySavings = savings;
-		this.investmentRate = investmentRate;
-		this.retirementage = retAge;
-		this.initialSavings = initSavings;
+		if (age >= 1) {
+			this.age = age;
+		}
+		else {
+			this.age = 1;
+		}
+		
+		if (yearlySavings >= 0) {
+			this.yearlySavings = savings;}
+		else {
+			this.yearlySavings = 0;
+		}
+		
+		if (investmentRate >= 0) {
+			this.investmentRate = investmentRate;
+		}
+		else {
+			this.investmentRate = 0;
+		}
+		
+		if (retAge > age) {
+			this.retirementage = retAge;
+		}
+		else {
+			this.retirementage = age + 1;
+		}
+		
+		if (initSavings >= 0) {
+			this.initialSavings = initSavings;
+		}
+		else {
+			this.initialSavings = 0;
+		}
 	}
 	
 	public RetirementPlan(RetirementPlan toCopy) {
@@ -75,11 +103,11 @@ public class RetirementPlan {
 	}
 
 	public void setRetirementage(int retirementage) {
-		if(retirementage >= age) {
+		if(retirementage > age) {
 		this.retirementage = retirementage;
 		}
 		else {
-			this.retirementage = age;
+			this.retirementage = age + 1;
 		}
 	}
 
@@ -127,9 +155,6 @@ public class RetirementPlan {
 			}
 			
 		}
-
-		
-	
 	
 	public int calculateYearsToRetirement() {
 			int yearsToRetirement = this.retirementage - age;
@@ -150,6 +175,7 @@ public class RetirementPlan {
 	}
 	
 	public float calculateNeededAmountAtRetirement() {
+		// not functional yet
 		return 0;
 		
 	}

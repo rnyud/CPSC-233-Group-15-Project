@@ -65,15 +65,15 @@ public class UserInput {
 			 } 
 			 else if(userChoice.equalsIgnoreCase("Retirement Plan")) {
 				 System.out.println("In Retirement Plan");
+				 Income incForRetirementPlan = getUserIncome(scn);
+				 float initSavings = incForRetirementPlan.getSavings();
 				 System.out.println("What is your current age?");
 				 int ageChoice = scn.nextInt();
 				 System.out.println("What is your expected retirement age?");
 				 int retAgeChoice = scn.nextInt();
-				 System.out.println("Enter your current amount of savings:");
-				 float initSavings = scn.nextFloat(); 
 				 System.out.println("Enter your expected monthly contributions:");
 				 float monthlySavings = scn.nextFloat();
-				 System.out.println("Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
+				 System.out.println("What is your risk tolerance: Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
 				 String riskChoice = scn.next();
 				 if (riskChoice.equalsIgnoreCase("low")) {
 					 double invRate = 0.03;
