@@ -98,7 +98,7 @@ public class UserInput {
 		 float monthlySavings = scn.nextFloat();
 		 System.out.println("What is your risk tolerance: Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
 		 String riskChoice = scn.next();
-		 // Three conditionals based on the users chosen risk tolerance
+		 // Three conditionals based on the users chosen risk tolerance (low, medium, or high)
 		 // Creates a new instance of RetirementPlan to show the data
 		 if (riskChoice.equalsIgnoreCase("low")) {
 			 double invRate = 0.03;
