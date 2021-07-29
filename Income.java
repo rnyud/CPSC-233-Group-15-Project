@@ -22,6 +22,7 @@ public class Income {
 	 * Savings set to zero.
 	 */
 	public Income(float pay) {
+		System.out.println("Pay checker" + pay);
 		this.weeklyPay = pay;
 		savings = 0;
 	}
