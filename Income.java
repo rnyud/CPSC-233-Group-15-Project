@@ -28,7 +28,7 @@ public class Income {
 	}
 	
 	/**
-	 * Constructor for when the object is called with pay and savings.
+	 * Constructor for when the object is called with pay and savings. 
 	 * @param pay The user's pay per week.
 	 * @param saved The user's savings.
 	 */
