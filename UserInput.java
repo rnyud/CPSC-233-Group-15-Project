@@ -85,9 +85,11 @@ public class UserInput {
 	 * @param scn, scanner
 	 */
 	public static void getRetirement(Scanner scn) {
+		// Uses an instance of Income to feed into RetirementPlan
 		 Income incForRetirementPlan = getUserIncome(scn);
 		 float inc = incForRetirementPlan.annualIncome();
 		 float initSavings = incForRetirementPlan.getSavings();
+		 // These next few lines of code print to the console, and ask the users questions in which the answers are stored as variables
 		 System.out.println("What is your current age?");
 		 int ageChoice = scn.nextInt();
 		 System.out.println("What is your expected retirement age?");
@@ -96,12 +98,14 @@ public class UserInput {
 		 float monthlySavings = scn.nextFloat();
 		 System.out.println("What is your risk tolerance: Low (3% avg. returns), Medium (5% avg. returns), or High? (7% avg. returns)");
 		 String riskChoice = scn.next();
+		 // Three conditionals based on the users chosen risk tolerance (low, medium, or high)
+		 // Creates a new instance of RetirementPlan to show the data
 		 if (riskChoice.equalsIgnoreCase("low")) {
 			 double invRate = 0.03;
 			 RetirementPlan lowRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
 			 lowRisk.calculateYearlyGrowth();
 			 float retirementSpend = lowRisk.calculateAmountNeededPerYear(inc);
-			 System.out.println("Expected yearly spending amount: " + retirementSpend);
+			 System.out.println("Expected amount needed per year at retirement: $" + retirementSpend);
 			 
 		 }
 		 else if (riskChoice.equalsIgnoreCase("medium")) {
@@ -109,14 +113,14 @@ public class UserInput {
 			 RetirementPlan medRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
 			 medRisk.calculateYearlyGrowth();
 			 float retirementSpend = medRisk.calculateAmountNeededPerYear(inc);
-			 System.out.println("Expected yearly spending amount: " + retirementSpend);
+			 System.out.println("Expected amount needed per year at retirement: $" + retirementSpend);
 		 }
 		 else if (riskChoice.equalsIgnoreCase("high")) {
 			 double invRate = 0.07;
 			 RetirementPlan highRisk = new RetirementPlan(ageChoice, (monthlySavings * 12), invRate, retAgeChoice, initSavings);
 			 highRisk.calculateYearlyGrowth();
 			 float retirementSpend = highRisk.calculateAmountNeededPerYear(inc);
-			 System.out.println("Expected yearly spending amount: " + retirementSpend);
+			 System.out.println("Expected amount needed per year at retirement: $" + retirementSpend);
 			 
 		 }
 		
