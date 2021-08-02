@@ -1,4 +1,4 @@
-package src.application;
+package application;
 // test
 import java.net.URL;
 import java.util.ResourceBundle;
