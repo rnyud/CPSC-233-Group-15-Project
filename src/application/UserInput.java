@@ -1,5 +1,5 @@
-package application;
-import model.*;
+package src.application;
+import src.model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
