@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -7,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RetirementController">
    <children>
@@ -47,21 +47,22 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <CheckBox fx:id="riskChoiceLow" mnemonicParsing="false" text="Low" />
-      <CheckBox fx:id="riskChoiceMed" mnemonicParsing="false" text="Medium">
+      <CheckBox fx:id="riskChoiceLow" mnemonicParsing="false" onMouseClicked="#lowClicked" text="Low" />
+      <CheckBox fx:id="riskChoiceMed" mnemonicParsing="false" onMouseClicked="#medClicked" text="Medium">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </CheckBox>
-      <CheckBox fx:id="riskChoiceHigh" mnemonicParsing="false" text="High">
+      <CheckBox fx:id="riskChoiceHigh" mnemonicParsing="false" onMouseClicked="#highClicked" text="High">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </CheckBox>
-      <Button fx:id="submitButton" mnemonicParsing="false" text="Click here to continue">
+      <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitted" text="Click here to continue">
          <VBox.margin>
             <Insets top="50.0" />
          </VBox.margin>
       </Button>
+      <ProgressBar prefWidth="200.0" progress="0.0" />
    </children>
 </VBox>

@@ -2,12 +2,15 @@ package application;
 // test
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import model.RetirementPlan;
 
-public class RetirementController {
+public class RetirementController extends RetirementPlan{
 
     @FXML
     private ResourceBundle resources;
@@ -38,6 +41,36 @@ public class RetirementController {
 
     @FXML
     private Button submitButton;
+    
+    @FXML
+    void highClicked(MouseEvent event) {
+    	this.setInvestmentRate(3.0);
+
+    }
+
+    @FXML
+    void lowClicked(MouseEvent event) {
+    	this.setInvestmentRate(5.0);
+
+    }
+
+    @FXML
+    void medClicked(MouseEvent event) {
+    	this.setInvestmentRate(7.0);
+
+    }
+    
+    @FXML
+    void submitted(ActionEvent event) {
+    	this.setAge(Integer.parseInt(ageBox.getText()));
+    	this.setRetirementage(Integer.parseInt(retAgeBox.getText()));
+    	this.setYearlySavings(Float.parseFloat(monthlyBox.getText()));
+    	this.setInitialSavings(Float.parseFloat(currentSavingsBox.getText()));
+    	calculateYearlyGrowth();
+
+
+
+    }
 
     @FXML
     void initialize() {
@@ -49,6 +82,7 @@ public class RetirementController {
         assert riskChoiceMed != null : "fx:id=\"riskChoiceMed\" was not injected: check your FXML file 'VisualizeRetirement.fxml'.";
         assert riskChoiceHigh != null : "fx:id=\"riskChoiceHigh\" was not injected: check your FXML file 'VisualizeRetirement.fxml'.";
         assert submitButton != null : "fx:id=\"submitButton\" was not injected: check your FXML file 'VisualizeRetirement.fxml'.";
+        
 
     }
 }
