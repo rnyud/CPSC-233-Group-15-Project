@@ -19,7 +19,7 @@ public class TestExpenseChart extends Application {
 	    	Scene scene = new Scene(root);
 	    	arg0.setScene(scene);
 	    	arg0.show();
-	    
+	    	//Yes
 		
 	}
     public static void main(String[] args) {
