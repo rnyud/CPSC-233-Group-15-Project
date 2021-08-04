@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="670.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RetirementController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RetirementController">
    <tabs>
       <Tab text="Input">
          <content>
@@ -57,6 +57,11 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
+                  <Label fx:id="label1" layoutX="444.0" layoutY="65.0" prefHeight="23.0" prefWidth="440.0" text="Label" />
+                  <Label fx:id="label2" layoutX="444.0" layoutY="111.0" prefHeight="17.0" prefWidth="442.0" text="Label" />
+                  <Label fx:id="label3" layoutX="444.0" layoutY="154.0" prefHeight="17.0" prefWidth="443.0" text="Label" />
+                  <Label fx:id="label4" layoutX="444.0" layoutY="194.0" prefHeight="17.0" prefWidth="445.0" text="Label" />
+                  <Label fx:id="label5" layoutX="444.0" layoutY="226.0" prefHeight="17.0" prefWidth="440.0" text="Label" />
                </children></AnchorPane>
          </content>
       </Tab>
