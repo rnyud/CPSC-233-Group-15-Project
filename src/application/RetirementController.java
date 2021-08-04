@@ -1,14 +1,25 @@
 package application;
+import java.io.IOException;
 // test
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.RetirementPlan;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 
 public class RetirementController extends RetirementPlan{
 
@@ -43,34 +54,75 @@ public class RetirementController extends RetirementPlan{
     private Button submitButton;
     
     @FXML
+    private BarChart<String, Float> retirementChart;
+    
+    @FXML
+    private CategoryAxis x;
+    
+    @FXML
+    private NumberAxis y; 
+
+    
+    @FXML
     void highClicked(MouseEvent event) {
-    	this.setInvestmentRate(3.0);
+    	this.setInvestmentRate(0.03);
 
     }
 
     @FXML
     void lowClicked(MouseEvent event) {
-    	this.setInvestmentRate(5.0);
+    	this.setInvestmentRate(0.05);
 
     }
 
     @FXML
     void medClicked(MouseEvent event) {
-    	this.setInvestmentRate(7.0);
+    	this.setInvestmentRate(0.07);
 
     }
     
     @FXML
-    void submitted(ActionEvent event) {
+    void submitted(MouseEvent event) {
     	this.setAge(Integer.parseInt(ageBox.getText()));
     	this.setRetirementage(Integer.parseInt(retAgeBox.getText()));
-    	this.setYearlySavings(Float.parseFloat(monthlyBox.getText()));
+    	float initializeSavings = Float.parseFloat(monthlyBox.getText()) * 12;
+    	this.setYearlySavings(initializeSavings);
     	this.setInitialSavings(Float.parseFloat(currentSavingsBox.getText()));
-    	calculateYearlyGrowth();
+    	
+		int yearsToRetirement = calculateYearsToRetirement();
+		float initialSavings = this.getInitialSavings();
+		// Separate variable that does not get affected by the calculations
+		float initialSavingsForDisplay = initialSavings;
+		initialSavings = initialSavings + this.getYearlySavings();
+		// Use the growth function to do a compounding calculation
+		float yearAmount = growth(initialSavings);
+		
+	    XYChart.Series<String, Float> series1 = new Series<String, Float>();
+        series1.getData().add(new XYChart.Data<String, Float>("Year " + 1, yearAmount));
+
+		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
+
+	        if (yearCounter >= 2) {
+				yearAmount = yearAmount + this.getYearlySavings();
+				}
+				yearAmount = growth(yearAmount);
+				System.out.println(yearAmount + " " + yearCounter);
+		        series1.getData().add(new XYChart.Data<String, Float>("Year " + yearCounter, yearAmount));
+		        if (yearCounter == yearsToRetirement) {
+					// Use totalContribution function to get the total amount of money the user would invest
+					float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
+					retirementChart.getData().addAll(series1);
+					
+					}
+				
+	        
+		}
+
 
 
 
     }
+
 
     @FXML
     void initialize() {
