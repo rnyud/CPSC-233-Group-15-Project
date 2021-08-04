@@ -143,7 +143,7 @@ public class RetirementPlan {
 	/**
 	 * Method for calculating the yearly growth using a for loop:
 	 * Adds contributions after compounding them, therefore it is not just compounding the initial amount of savings
-	 * Prints information to the console for the user to see a year by year breakdown of their savings/investments
+	 * The code has been refactored to use other methods to do the printing.
 	 * Also provides the total amount the user has contributed, and how much interest/growth they have gained
 	 */
 	public float calculateYearlyGrowth() {
@@ -155,38 +155,58 @@ public class RetirementPlan {
 		initialSavings = initialSavings + yearlySavings;
 		// Use the growth function to do a compounding calculation
 		float yearAmount = growth(initialSavings);
-		System.out.println("Calculating your money's yearly growth...");
-		System.out.println("");
-		System.out.println("Year = " + 1 +  " |" + " Amount = $" + yearAmount);
+		// Start with year one
+		printYearlyInfo(1, yearAmount);
 		// This for loop adds the yearly contribution, then uses the growth function to calculate the growth of the money yearly
 		// until the retirement age is reached.
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
 			if (yearCounter >= 2) {
-			yearAmount = yearAmount + yearlySavings;}
+			yearAmount = yearAmount + yearlySavings;
+			}
 			yearAmount = growth(yearAmount);
-			System.out.println("Year = " + yearCounter + " |" + " Amount = $" + yearAmount);
-			
+			printYearlyInfo(yearCounter, yearAmount);
 			// Once the retirement age is reached in the calculation, it will print info to the console
 			if (yearCounter == yearsToRetirement) {
-				System.out.println("------------------------------------------");
-				System.out.println("Your Retirement Breakdown:");
-				System.out.println("");
-				System.out.println("Based on your chosen risk level and contributions...");
-				System.out.println("");
-				System.out.println("At age " + (yearCounter + age) + ", you could have a total of $" + yearAmount + " saved for retirement");
 				// Use totalContribution function to get the total amount of money the user would invest
 				float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
-				System.out.println("");
-				System.out.println("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
-				System.out.println("Total compound interest/growth = $" + (yearAmount - totalContribution));
-				System.out.println("");
-				System.out.println("Consider contributing more savings for a larger amount saved at retirement.");
-				System.out.println("");
+				printFinal(totalContribution, yearCounter,yearAmount,age);
+				
 				}
 			}
 		return yearAmount;
 			
 		}
+	/**
+	 * This method prints the yearly info to the console.
+	 * @param yearCounter
+	 * @param yearAmount
+	 */
+	public void printYearlyInfo(int yearCounter, float yearAmount) {
+		System.out.println("Year = " + yearCounter + " |" + " Amount = $" + yearAmount);
+	}
+	/**
+	 * This method prints the required info to the console after the calculations are finished.
+	 * @param totalContribution
+	 * @param yearCounter
+	 * @param yearAmount
+	 * @param age
+	 */
+	public void printFinal(float totalContribution, int yearCounter, float yearAmount, int age) {
+		System.out.println("------------------------------------------");
+		System.out.println("Your Retirement Breakdown:");
+		System.out.println("");
+		System.out.println("Based on your chosen risk level and contributions...");
+		System.out.println("");
+		System.out.println("At age " + (yearCounter + age) + ", you could have a total of $" + yearAmount + " saved for retirement");
+		System.out.println("");
+		System.out.println("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
+		System.out.println("Total compound interest/growth = $" + (yearAmount - totalContribution));
+		System.out.println("");
+		System.out.println("Consider contributing more savings for a larger amount saved at retirement.");
+		System.out.println("");
+		
+	}
+	
 	/**
 	 * This function gets the amount of years left until retirement, so that the for loop in 
 	 * calculateYearlyGrowth can work properly
