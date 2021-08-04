@@ -26,6 +26,7 @@ public class ExpenseChartController {
     		Expenses expense = list.getExpenseList()[i];
     		new PieChart.Data(expense.getExpenseName(), expense.getExpenseValue());
     	}
+    	
     }
     
    public void setList(ExpenseList list) {
