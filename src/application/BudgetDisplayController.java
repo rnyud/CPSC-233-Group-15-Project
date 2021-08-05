@@ -15,7 +15,11 @@ import model.Budget;
 import model.ExpenseList;
 import model.Expenses;
 import model.Income;
-
+/**
+ * 
+ * @author ManpreetM1
+ *
+ */
 public class BudgetDisplayController  {
 	
 	private Budget userBudget;

@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author ManpreetM1
+ *
+ */
 public class TestBudgetDisplay extends Application {
 
 	@Override
