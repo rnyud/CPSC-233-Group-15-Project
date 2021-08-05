@@ -14,6 +14,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -61,7 +62,21 @@ public class RetirementController extends RetirementPlan{
     
     @FXML
     private NumberAxis y; 
+    
+    @FXML
+    private Label label1;
+    
+    @FXML
+    private Label label2;
 
+    @FXML
+    private Label label3;
+
+    @FXML
+    private Label label4;
+
+    @FXML
+    private Label label5;
     
     @FXML
     void highClicked(MouseEvent event) {
@@ -97,8 +112,8 @@ public class RetirementController extends RetirementPlan{
 		// Use the growth function to do a compounding calculation
 		float yearAmount = growth(initialSavings);
 		
-	    XYChart.Series<String, Float> series1 = new Series<String, Float>();
-        series1.getData().add(new XYChart.Data<String, Float>("Year " + 1, yearAmount));
+	    XYChart.Series<String, Float> retirementSeries = new Series<String, Float>();
+        retirementSeries.getData().add(new XYChart.Data<String, Float>("Year " + 1, yearAmount));
 
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
 
@@ -106,21 +121,26 @@ public class RetirementController extends RetirementPlan{
 				yearAmount = yearAmount + this.getYearlySavings();
 				}
 				yearAmount = growth(yearAmount);
-				System.out.println(yearAmount + " " + yearCounter);
-		        series1.getData().add(new XYChart.Data<String, Float>("Year " + yearCounter, yearAmount));
+		        retirementSeries.getData().add(new XYChart.Data<String, Float>("Year " + yearCounter, yearAmount));
 		        if (yearCounter == yearsToRetirement) {
 					// Use totalContribution function to get the total amount of money the user would invest
 					float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
-					retirementChart.getData().addAll(series1);
-					
+					retirementChart.getData().addAll(retirementSeries);
+					setLabelText(yearCounter, yearAmount, totalContribution);
+
 					}
 				
-	        
 		}
 
-
-
-
+    }
+    
+    
+    public void setLabelText(int yearCounter, float yearAmount, float totalContribution) {
+		label1.setText("Based on your chosen risk level and contributions...");
+		label2.setText("At age " + (yearCounter + this.getAge()) + ", you could have a total of $" + yearAmount + " saved for retirement");
+		label3.setText("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
+		label4.setText("Total compound interest/growth = $" + (yearAmount - totalContribution));
+		label5.setText("Test");
     }
 
 
