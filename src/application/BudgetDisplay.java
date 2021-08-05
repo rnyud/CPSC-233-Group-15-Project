@@ -50,11 +50,11 @@ public class BudgetDisplay  {
     }
     @FXML
     void submitText(ActionEvent event) {
-    	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)
+    	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)***
     	Income userIncome = new Income(Float.parseFloat(incomeText.getText()),Float.parseFloat(savingsText.getText()));
     	String[] expenseNames = expenseNameText.getText().split(",");
     	String[] expenseAmount = expenseAmountText.getText().split(",");
-    	// Check to see if names and amounts are equivalent
+    	// Check to see if names and amounts are equivalent, if not display error label
     	if(expenseNames.length != expenseAmount.length) {
     		errorLabel.setText("Error: Number of expense Names and Number of expense Amounts don't match");
     		errorLabel.setVisible(true);
