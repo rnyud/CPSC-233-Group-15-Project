@@ -75,11 +75,18 @@ public class RetirementPlan {
 	}
 	// The upcoming setters and getters use the same constraints as the constructors
 	
-	// Getter for current age
+	/**
+	 * Getter for current age
+	 * @return age
+	 */
 	public int getAge() {
 		return age;
 	}
-	// Setter for current age
+	
+	/**
+	 * Setter for current age.
+	 * @param Age, curent age.
+	 */
 	public void setAge(int Age) {
 		if (Age >= 1) {
 		this.age = Age;
@@ -88,11 +95,19 @@ public class RetirementPlan {
 			this.age = 1;
 		}
 	}
-	// Getter for investment rate of return
+	
+	/**
+	 * Getter for investment rate of return.
+	 * @return investmentRate
+	 */
 	public double getInvestmentRate() {
 		return investmentRate;
 	}
-	//Setter for investment rate of return
+	
+	/**
+	 * Setter for investment rate of return.
+	 * @param investmentRate
+	 */
 	public void setInvestmentRate(double investmentRate) {
 		if (investmentRate >= 0) {
 		this.investmentRate = investmentRate;
@@ -101,11 +116,18 @@ public class RetirementPlan {
 			this.investmentRate = 0;
 		}
 	}
-	// Getter for yearly savings
+	/**
+	 * Getter for yearly savings.
+	 * @return yearlySavings
+	 */
 	public float getYearlySavings() {
 		return yearlySavings;
 	}
-	// Setter for yearly savings
+	
+	/**
+	 * Setter for yearly savings.
+	 * @param yearlySavings
+	 */
 	public void setYearlySavings(float yearlySavings) {
 		if (yearlySavings >= 0) {
 		this.yearlySavings = yearlySavings;
@@ -115,11 +137,18 @@ public class RetirementPlan {
 		}
 	}
 	
-	// Getter for expected age of retirement
+	/**
+	 * Getter for expected age of retirement.
+	 * @return retirementage
+	 */
 	public int getRetirementage() {
 		return retirementage;
 	}
-	// Setter for expected age of retirement
+	
+	/**
+	 * Setter for expected age of retirement
+	 * @param retirementage
+	 */
 	public void setRetirementage(int retirementage) {
 		if(retirementage > age) {
 		this.retirementage = retirementage;
@@ -128,11 +157,19 @@ public class RetirementPlan {
 			this.retirementage = age + 1;
 		}
 	}
-	// Getter for initial savings
+	
+	/**
+	 * Getter for initial savings.
+	 * @return initialSavings
+	 */
 	public float getInitialSavings() {
 		return initialSavings;
 	}
-	// Setter for initial savings
+	
+	/**
+	 * Setter for initial savings.
+	 * @param initialSavings
+	 */
 	public void setInitialSavings(float initialSavings) {
 		if (initialSavings >= 0) {
 		this.initialSavings = initialSavings;

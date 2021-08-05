@@ -24,12 +24,11 @@ import javafx.scene.chart.XYChart.Series;
 /**
  * This class is a controller for the "VisualizeRetirement.fxml" file for the GUI.
  * It extends the RetirementPlan class for easy access to its instance variables
- * and methods.
+ * and methods, and so we will not have to declare variables twice.
  * @author Rayner
  *
  */
 public class RetirementController extends RetirementPlan{
-
 	
 	// These next lines declare all labels, textfields, buttons, etc...
     @FXML
@@ -152,7 +151,7 @@ public class RetirementController extends RetirementPlan{
      * @param event
      */
     void submitted(MouseEvent event) {
-    	// Set instance variables for use in calculations
+    	// Set instance variables for use in calculations; parse text fields upon clicking submit.
     	this.setAge(Integer.parseInt(ageBox.getText()));
     	this.setRetirementage(Integer.parseInt(retAgeBox.getText()));
     	float initializeSavings = Float.parseFloat(monthlyBox.getText()) * 12;
@@ -161,8 +160,7 @@ public class RetirementController extends RetirementPlan{
     	float yearlyIncome = Float.parseFloat(incomeBox.getText()) * 48;    	
 		int yearsToRetirement = calculateYearsToRetirement();
 		float initialSavings = this.getInitialSavings();
-		// On the next line is a separate variable that does not get affected by the calculations,
-		// it is used in the totalContribution method.
+		// On the next line is a separate variable that does not get affected by the calculations, needed for totalContributions.
 		float initialSavingsForDisplay = initialSavings;
 		initialSavings = initialSavings + this.getYearlySavings();
 		// Use the growth function from parent class to do a compounding calculation
