@@ -69,6 +69,10 @@ public class BudgetDisplayController  {
     @FXML
     private NumberAxis y;
     
+    /**
+     * clears all text fields if the user clicks the clear button or if called by other method
+     * @param event
+     */
     @FXML
     void clearText(ActionEvent event) {
     	expenseNameText.clear();
@@ -78,9 +82,13 @@ public class BudgetDisplayController  {
     	goalText.clear();
     	timeText.clear();
     }
+    
+    /**
+     * Takes in all of the user input for a new Budget object after user clicks the submit button
+     * @param event
+     */
     @FXML
     void submitText(ActionEvent event) {
-    	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)***
     	try {
     		goalLabel.setVisible(false);
     		missLabel.setVisible(false);
@@ -114,7 +122,7 @@ public class BudgetDisplayController  {
     
     /**
      * Sets the data in the bar graph using the budget object for its Y values
-     * @param userBudget
+     * @param userBudget, budget object who's values are used
      */
     private void setData(Budget userBudget) {
     	 XYChart.Series<String, Double> series = new XYChart.Series<String, Double>();
@@ -143,6 +151,9 @@ public class BudgetDisplayController  {
     		 missLabel.setVisible(true);
     	 }
     }
+    /**
+     * Initializes the GUI and sets the labels for the axises on the bar graph
+     */
     @FXML
     void initialize() {
     	assert incomeText != null : "fx:id=\"incomeText\" was not injected: check your FXML file 'VisualizeBudgetDisplay.fxml'.";
