@@ -1,5 +1,7 @@
 package model;
 /**
+ * This class provides the logic for the RetirementController class,
+ * and also works for text-based version as well.
  * 
  * @author Rayner
  *
@@ -248,6 +250,19 @@ public class RetirementPlan {
 		float retirementSpending = (float) (annualIncome * 0.8);
 		return retirementSpending;
 		
-	}	
+	}
+	/**
+	 * This method returns the amount of years the users potential 
+	 * retirement savings could last, based on the calculateAmountNeededPerYear function,
+	 * and the total amount of potential savings.
+	 * @param yearAmount, final retirement savings amount after compounding
+	 * @param retirementSpending, projected expenses at retirement
+	 * @return yearsLasted, the amount of years the savings could last
+	 */
+	public float savingsYearsLasted(float yearAmount, float retirementSpending) {
+		float yearsLasted = yearAmount / retirementSpending;
+		return yearsLasted;
+		
+	}
 	
 }
