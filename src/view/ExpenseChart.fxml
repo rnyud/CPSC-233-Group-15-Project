@@ -10,10 +10,10 @@
       <PieChart fx:id="expenseChart" prefHeight="500.0" prefWidth="500.0" title="Expenses by Percentage" />
       <BarChart fx:id="barChart" layoutX="500.0" prefHeight="500.0" prefWidth="500.0" title="Expenses by Value">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis label="Expenses (Names)" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis label="Values ($)" side="LEFT" />
         </yAxis>
       </BarChart>
    </children>

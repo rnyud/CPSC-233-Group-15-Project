@@ -60,10 +60,6 @@ public class ExpenseChartController {
     	}
     	expenseChart.setData(FXCollections.observableArrayList(expenseData));
     	barChart.getData().add(series1);
-    	
-    	
-    	
-    	
     }
     
    /**
@@ -76,10 +72,12 @@ public class ExpenseChartController {
 	   this.list = list;
 	   displayChart();
    }
-
+   
+   /**
+    * Initializes the GUI.
+    */
     @FXML
     void initialize() {
-    	System.out.println("A");
     	assert barChart != null : "fx:id=\"barChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         assert expenseChart != null : "fx:id=\"expenseChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         
