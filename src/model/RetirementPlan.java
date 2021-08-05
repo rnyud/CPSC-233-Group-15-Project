@@ -147,6 +147,7 @@ public class RetirementPlan {
 	 * Adds contributions after compounding them, therefore it is not just compounding the initial amount of savings
 	 * The code has been refactored to use other methods to do the printing.
 	 * Also provides the total amount the user has contributed, and how much interest/growth they have gained
+	 * @return yearAmount
 	 */
 	public float calculateYearlyGrowth() {
 		

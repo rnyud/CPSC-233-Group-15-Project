@@ -30,6 +30,8 @@ import javafx.scene.chart.XYChart.Series;
  */
 public class RetirementController extends RetirementPlan{
 
+	
+	// These next lines declare all labels, textfields, buttons, etc...
     @FXML
     private ResourceBundle resources;
 
@@ -62,6 +64,9 @@ public class RetirementController extends RetirementPlan{
 
     @FXML
     private Button submitButton;
+    
+    @FXML
+    private Button returnToMain;
     
     @FXML
     private BarChart<String, Float> retirementChart;
@@ -109,7 +114,8 @@ public class RetirementController extends RetirementPlan{
     @FXML
     /**
      * Handler for when the "High" risk tolerance is selected.
-     * @param event
+     * Sets the investmentRate instance variable.
+     * @param event, mouse click event.
      */
     void highClicked(MouseEvent event) {
     	this.setInvestmentRate(0.07);
@@ -119,7 +125,8 @@ public class RetirementController extends RetirementPlan{
     @FXML
     /**
      * Handler for when the "Low" risk tolerance is selected.
-     * @param event
+     * Sets the investmentRate instance variable.
+     * @param event, mouse click event.
      */
     void lowClicked(MouseEvent event) {
     	this.setInvestmentRate(0.03);
@@ -129,7 +136,8 @@ public class RetirementController extends RetirementPlan{
     @FXML
     /**
      * Handler for when the "Medium" risk tolerance is selected.
-     * @param event
+     * @param event, mouse click event.
+     * Sets the investmentRate instance variable.
      */
     void medClicked(MouseEvent event) {
     	this.setInvestmentRate(0.05);
@@ -144,15 +152,13 @@ public class RetirementController extends RetirementPlan{
      * @param event
      */
     void submitted(MouseEvent event) {
-    	// Set instance variables
+    	// Set instance variables for use in calculations
     	this.setAge(Integer.parseInt(ageBox.getText()));
     	this.setRetirementage(Integer.parseInt(retAgeBox.getText()));
     	float initializeSavings = Float.parseFloat(monthlyBox.getText()) * 12;
     	this.setYearlySavings(initializeSavings);
     	this.setInitialSavings(Float.parseFloat(currentSavingsBox.getText()));
-    	
-    	float yearlyIncome = Float.parseFloat(incomeBox.getText()) * 48;
-    	
+    	float yearlyIncome = Float.parseFloat(incomeBox.getText()) * 48;    	
 		int yearsToRetirement = calculateYearsToRetirement();
 		float initialSavings = this.getInitialSavings();
 		// On the next line is a separate variable that does not get affected by the calculations,
@@ -173,6 +179,7 @@ public class RetirementController extends RetirementPlan{
 	    retirementSeries.setName("Yearly Growth");
         retirementSeries.getData().add(new XYChart.Data<String, Float>("1", yearAmount));
 
+        // Loop through each year till retirement, calculate growth, and add to chart.
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
 
 	        if (yearCounter >= 2) {
@@ -187,7 +194,6 @@ public class RetirementController extends RetirementPlan{
 					float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
 					// Next line also adapted from the link above
 					retirementChart.getData().addAll(retirementSeries);
-					
 					setLabelText(yearCounter, yearAmount, totalContribution, yearlyIncome);
 
 					}
@@ -197,7 +203,7 @@ public class RetirementController extends RetirementPlan{
     }
     
     /**
-     * This method adds text to all but one of the labels in the GUI (intro label)
+     * This method adds text to all but one of the labels in the GUI (intro label; which is set on startup)
      * @param yearCounter, years of compounding
      * @param yearAmount, final amount after compounding
      * @param totalContribution, total contributions excluding growth
@@ -219,11 +225,11 @@ public class RetirementController extends RetirementPlan{
 		}
 		currentAgeLabel.setText("Current Age: " + this.getAge());
 		monthlyContLabel.setText("Monthly contributions: $" + (this.getYearlySavings()/12));
-		
 		totalRetAmountLabel.setText("At age " + (yearCounter + this.getAge()) + ", you could have a total of $" + yearAmount + " saved for retirement");
 		totalContLabel.setText("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
 		totalIntrLabel.setText("Total compound interest/growth = $" + (yearAmount - totalContribution));
 		expRetSpendLabel.setText("When you retire, you can expect to spend $" + this.calculateAmountNeededPerYear(yearlyIncome) + " annually.");
+		// Calculate the number of years the savings will last
 		float yearsLasted = this.savingsYearsLasted(yearAmount, this.calculateAmountNeededPerYear(yearlyIncome));
 		String yearsLastedString = String.format(("%.2f"), yearsLasted);
 		yearsLastedLabel.setText("This amount could last " + yearsLastedString + " years after retirement based on the above estimate.");
@@ -232,7 +238,7 @@ public class RetirementController extends RetirementPlan{
 
     @FXML
     /**
-     * Initializer
+     * This method initializes the controller for display.
      */
     void initialize() {
         assert ageBox != null : "fx:id=\"ageBox\" was not injected: check your FXML file 'VisualizeRetirement.fxml'.";
