@@ -38,7 +38,7 @@ public class ExpenseChartController {
     @FXML
     private PieChart expenseChart;
     
-    private ExpenseList list = new ExpenseList(2);
+    private ExpenseList list;
     
  
     /**
