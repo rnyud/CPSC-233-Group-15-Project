@@ -49,6 +49,8 @@ public class ExpenseChartController {
     	
     	PieChart.Data[] expenseData = new PieChart.Data[list.getExpenseList().length];
     	XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+    	// Here, both data-sets are created that will be used to feed data to the 
+    	// charts.
     	series1.setName("Expense Value ($)"); 
     	for(int i = 0; i<list.getExpenseList().length; i++) {
     		Expenses expense = list.getExpenseList()[i];
