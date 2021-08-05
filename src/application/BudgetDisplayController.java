@@ -16,7 +16,7 @@ import model.ExpenseList;
 import model.Expenses;
 import model.Income;
 
-public class BudgetDisplay  {
+public class BudgetDisplayController  {
 	
 	private Budget userBudget;
 	
@@ -67,6 +67,7 @@ public class BudgetDisplay  {
     void submitText(ActionEvent event) {
     	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)***
     	try {
+    		budgetGraph.getData().clear();
 	    	Income userIncome = new Income(Float.parseFloat(incomeText.getText()),Float.parseFloat(savingsText.getText()));
 	    	String[] expenseNames = expenseNameText.getText().split(",");
 	    	String[] expenseAmount = expenseAmountText.getText().split(",");
@@ -115,5 +116,7 @@ public class BudgetDisplay  {
         assert savingsText != null : "fx:id=\"savingsText\" was not injected: check your FXML file 'VisualizeBudgetDisplay.fxml'.";
         assert budgetGraph != null : "fx:id=\"budgetGraph\" was not injected: check your FXML file 'VisualizeBudgetDisplay.fxml'.";
 
+        budgetGraph.getXAxis().setLabel("Weeks");
+        budgetGraph.getYAxis().setLabel("Dollar Amount in Savings");
     }
 }
