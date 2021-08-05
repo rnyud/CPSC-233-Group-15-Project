@@ -13,17 +13,21 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
+                  <TextField fx:id="expenseNameText" layoutX="215.0" layoutY="45.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the name of each Expense(seperated by a comma):" />
                   <TextField fx:id="expenseAmountText" layoutX="215.0" layoutY="95.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the amount of each Expense(seperated by a comma):" />
                   <TextField fx:id="incomeText" layoutX="215.0" layoutY="145.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter your Total Weekly Income:" />
                   <TextField fx:id="savingsText" layoutX="215.0" layoutY="195.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the total amount in your Savings:" />
-                  <Button fx:id="submitButton" layoutX="250.0" layoutY="333.0" mnemonicParsing="false" onAction="#submitText" prefHeight="31.0" prefWidth="70.0" text="Submit" />
-                  <Button fx:id="clearButton" layoutX="350.0" layoutY="333.0" mnemonicParsing="false" onAction="#clearText" prefHeight="31.0" prefWidth="70.0" text="Clear" />
+                  <TextField fx:id="goalText" layoutX="215.0" layoutY="245.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the goal amount you want to achieve:" />
+                  <TextField fx:id="timeText" layoutX="215.0" layoutY="295.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the number of weeks you want to attain your goal:" />
+                  <Button fx:id="submitButton" layoutX="250.0" layoutY="345.0" mnemonicParsing="false" onAction="#submitText" prefHeight="31.0" prefWidth="70.0" text="Submit" />
+                  <Button fx:id="clearButton" layoutX="350.0" layoutY="345.0" mnemonicParsing="false" onAction="#clearText" prefHeight="31.0" prefWidth="70.0" text="Clear" />
                   <Label layoutX="14.0" layoutY="100.0" text="Weekly Expenses(Amount):" />
                   <Label layoutX="89.0" layoutY="150.0" text="Weekly Income:" />
                   <Label layoutX="103.0" layoutY="200.0" text="Total Savings:" />
-                  <TextField fx:id="expenseNameText" layoutX="215.0" layoutY="45.0" prefHeight="31.0" prefWidth="409.0" promptText="Enter the name of each Expense(seperated by a comma):" />
                   <Label layoutX="28.0" layoutY="50.0" text="Weekly Expenses(Name):" />
-                  <Label fx:id="errorLabel" layoutX="49.0" layoutY="266.0" prefHeight="21.0" prefWidth="578.0" text="Error" textAlignment="CENTER" textFill="RED" visible="false" />
+                  <Label layoutX="103.0" layoutY="250.0" text="Goal Amount:" />
+                  <Label layoutX="70.0" layoutY="300.0" text="Number of Weeks:" />
+                  <Label fx:id="errorLabel" layoutX="50.0" layoutY="10.0" prefHeight="21.0" prefWidth="578.0" text="Error" textAlignment="CENTER" textFill="RED" visible="false" />
                </children>
             </Pane>
          </content>
@@ -34,10 +38,10 @@
                <children>
                   <BarChart fx:id="budgetGraph" layoutY="6.0" prefHeight="400.0" prefWidth="661.0">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis side="BOTTOM" fx:id="x" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis fx:id="y" side="LEFT" />
                     </yAxis>
                   </BarChart>
                </children>

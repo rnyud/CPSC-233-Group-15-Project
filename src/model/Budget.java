@@ -22,7 +22,15 @@ public class Budget {
 		this.inFlow = inFlow;
 	}
 
-
+	/**
+	 * Setter for instance variable timeToAchieve, most likely set using user input.
+	 * 
+	 * @param expectedTimeFrame, double representing expected time to reach goal
+	 */
+	public double getTimeToAchieve() {
+		return timeToAchieve;
+	}
+	
 	/**
 	 * Setter for instance variable timeToAchieve, most likely set using user input.
 	 * 
@@ -42,6 +50,22 @@ public class Budget {
 	}
 	
 	/**
+	 * Getter for ExpenseList object instance variable
+	 * @return outFlow, ExpenseList object
+	 */
+	public ExpenseList getOutFlow() {
+		return outFlow;
+	}
+	
+	/**
+	 * Getter for Income object instance variable
+	 * @return inFlow, Income object
+	 */
+	public Income getInFlow() {
+		return inFlow;
+	}
+	
+	/**
 	 * Setter for instance variable goal.
 	 * 
 	 * @param moneyGoal
@@ -51,12 +75,11 @@ public class Budget {
 	}
 	
 	/**
-	 * (Private Helper Method)
 	 * Calculates the net gain/loss weekly from total weekly pay subtracted by weekly expenses.
 	 * 
 	 * @return 
 	 */
-	private double calculateNetFlow() {
+	public double calculateNetFlow() {
 		return inFlow.getSavings() - outFlow.totalExpense();
 	}
 	
