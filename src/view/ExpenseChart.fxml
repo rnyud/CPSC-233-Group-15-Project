@@ -7,8 +7,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenseChartController">
    <children>
-      <PieChart fx:id="expenseChart" prefHeight="500.0" prefWidth="500.0" />
-      <BarChart fx:id="barChart" layoutX="500.0" prefHeight="500.0" prefWidth="500.0">
+      <PieChart fx:id="expenseChart" prefHeight="500.0" prefWidth="500.0" title="Expenses by Percentage" />
+      <BarChart fx:id="barChart" layoutX="500.0" prefHeight="500.0" prefWidth="500.0" title="Expenses by Value">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

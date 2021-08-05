@@ -2,11 +2,13 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.chart.Axis;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +33,7 @@ public class ExpenseChartController {
     private URL location;
     
     @FXML
-    private BarChart<?, ?> barChart;
+    private BarChart<String, Number> barChart;
 
     @FXML
     private PieChart expenseChart;
@@ -43,36 +45,28 @@ public class ExpenseChartController {
     public void displayChart() {
     	
     	PieChart.Data[] expenseData = new PieChart.Data[list.getExpenseList().length];
+    	XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+    	series1.setName("Expense Value ($)"); 
     	for(int i = 0; i<list.getExpenseList().length; i++) {
     		Expenses expense = list.getExpenseList()[i];
-    		if(list.getExpenseList()[i]!=null) {
-	    		System.out.println(expense.getExpenseName());
-	    		expenseData[i] = new PieChart.Data(expense.getExpenseName() + ": $" +String.format("%.2f", expense.getExpenseValue()), expense.getExpenseValue());
-    		}
+    		series1.getData().add(new XYChart.Data<>(expense.getExpenseName(), expense.getExpenseValue()));
+	    	expenseData[i] = new PieChart.Data(expense.getExpenseName() + ": $" +String.format("%.2f", expense.getExpenseValue()), expense.getExpenseValue());
+    		
     	}
     	expenseChart.setData(FXCollections.observableArrayList(expenseData));
+    	barChart.getData().add(series1);
     	
-    	CategoryAxis xAxis    = new CategoryAxis();
-    	xAxis.setLabel("Expenses");
-
-    	NumberAxis yAxis = new NumberAxis();
     	
-    	yAxis.setLabel("Expense Value ($)");
-    	barChart = new BarChart(xAxis, yAxis);
-    	XYChart.Series dataSeries1 = new XYChart.Series();
-    	dataSeries1.setName("2014");
-
-    	dataSeries1.getData().add(new XYChart.Data("Desktop", 178));
-    	dataSeries1.getData().add(new XYChart.Data("Phone"  , 65));
-    	dataSeries1.getData().add(new XYChart.Data("Tablet"  , 23));
-
-
-    	barChart.getData().add(dataSeries1);
     	
     	
     }
     
-    
+   /**
+    * Sets the list, and having set it, displays a pie chart.
+    * This prevents the pie chart from having to work with a blank list when it comes
+    * time to display something.
+    * @param list The ExpenseList input by the user.
+    */
    public void setList(ExpenseList list) {
 	   this.list = list;
 	   displayChart();
