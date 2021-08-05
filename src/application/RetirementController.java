@@ -22,7 +22,7 @@ import model.RetirementPlan;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 /**
- * This class is a controller for the "VisualizeRetirement.fxml" file.
+ * This class is a controller for the "VisualizeRetirement.fxml" file for the GUI.
  * It extends the RetirementPlan class for easy access to its instance variables
  * and methods.
  * @author Rayner
