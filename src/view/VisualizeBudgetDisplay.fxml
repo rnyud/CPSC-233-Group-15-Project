@@ -29,7 +29,11 @@
                   <Label layoutX="103.0" layoutY="250.0" text="Goal Amount:" />
                   <Label layoutX="70.0" layoutY="300.0" text="Number of Weeks:" />
                   <Label fx:id="errorLabel" alignment="CENTER" layoutX="50.0" layoutY="380.0" prefHeight="21.0" prefWidth="578.0" text="Error" textAlignment="CENTER" textFill="RED" visible="false" />
-                  <Label layoutX="79.0" layoutY="10.0" text="Welcome to the Budget Simulation Section of the app, please input your info below!" />
+                  <Label layoutX="27.0" layoutY="14.0" text="Welcome to the Budget Simulation Tool of the app, please input your info below!">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font></Label>
+                  <Label layoutX="15.0" layoutY="350.0" prefHeight="25.0" prefWidth="267.0" text="(Click the Graph after submitting)" />
                </children>
             </Pane>
          </content>
