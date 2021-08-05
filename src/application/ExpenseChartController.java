@@ -41,7 +41,10 @@ public class ExpenseChartController {
     private ExpenseList list = new ExpenseList(2);
     
  
-    
+    /**
+     * This method displays the two charts, the pie chart and the bar chart, with
+     * the expense values illustrated in two forms, fraction-wise and value-wise.
+     */
     public void displayChart() {
     	
     	PieChart.Data[] expenseData = new PieChart.Data[list.getExpenseList().length];
