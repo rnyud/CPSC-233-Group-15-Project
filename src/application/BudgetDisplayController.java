@@ -1,7 +1,10 @@
 package application;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -37,6 +40,12 @@ public class BudgetDisplayController  {
     private Label errorLabel;
     
     @FXML
+    private Label goalLabel;
+    
+    @FXML
+    private Label missLabel;
+    
+    @FXML
     private TextField expenseNameText;
     
     @FXML
@@ -66,13 +75,17 @@ public class BudgetDisplayController  {
     	expenseAmountText.clear();
     	incomeText.clear();
     	savingsText.clear();
+    	goalText.clear();
+    	timeText.clear();
     }
     @FXML
     void submitText(ActionEvent event) {
     	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)***
     	try {
+    		goalLabel.setVisible(false);
+    		missLabel.setVisible(false);
     		budgetGraph.getData().clear();
-	    	Income userIncome = new Income(Float.parseFloat(savingsText.getText()),Float.parseFloat(incomeText.getText()));
+	    	Income userIncome = new Income(Float.parseFloat(incomeText.getText()),Float.parseFloat(savingsText.getText()));
 	    	String[] expenseNames = expenseNameText.getText().split(",");
 	    	String[] expenseAmount = expenseAmountText.getText().split(",");
 	    	// Check to see if names and amounts are equivalent, if not display error label
@@ -87,8 +100,6 @@ public class BudgetDisplayController  {
 	    		userExpenses.addExpense(expense);
 	    	}
 	    	Budget userBudget = new Budget(userExpenses,userIncome);
-	    	// Remember to add goal, time, etc.
-	    	System.out.printf("Text field: %b%n", goalText);
 	    	userBudget.setGoal(Double.parseDouble(goalText.getText()));
 	    	userBudget.setTimeToAchieve(Double.parseDouble(timeText.getText()));
 	    	setData(userBudget);
@@ -101,14 +112,36 @@ public class BudgetDisplayController  {
     	
     }
     
+    /**
+     * Sets the data in the bar graph using the budget object for its Y values
+     * @param userBudget
+     */
     private void setData(Budget userBudget) {
-    	 XYChart.Series<String, Double> data = new XYChart.Series<String, Double>();
+    	 XYChart.Series<String, Double> series = new XYChart.Series<String, Double>();
     	 for(int week = 0; week < userBudget.getTimeToAchieve(); week++) {
-    		 data.getData().add(new Data<String,Double>(Integer.toString(week),userBudget.calculateNetFlow()));
+    		 XYChart.Data<String, Double> data = new XYChart.Data<String, Double>(Integer.toString(week),(double)userBudget.getInFlow().getSavings());
+    			// Changes color of bar when goal is met(Not my code)
+    			// Got from https://www.tabnine.com/code/java/methods/javafx.scene.Node/setStyle 
+    			data.nodeProperty().addListener(new ChangeListener<Node>() {
+    				@Override
+    				public void changed(ObservableValue<? extends Node> value, Node oldNode, Node newNode) {
+    					if(newNode != null) {
+    						if(data.getYValue().intValue() >= userBudget.getGoal()) {
+    						newNode.setStyle("-fx-bar-fill: navy;");
+    						goalLabel.setVisible(true);
+    						}
+    					}
+    				}
+    			});
+    			// End of code taken from website
+    		 series.getData().add(data);
     		 userBudget.getInFlow().weeklyIncome(userBudget.getOutFlow());
-    		 
     	 } 
-    	 budgetGraph.getData().add(data);
+    	 budgetGraph.getData().add(series);
+    	 budgetGraph.getStylesheets().add(getClass().getResource("colored-chart.css").toExternalForm());
+    	 if(!goalLabel.isVisible()) {
+    		 missLabel.setVisible(true);
+    	 }
     }
     @FXML
     void initialize() {

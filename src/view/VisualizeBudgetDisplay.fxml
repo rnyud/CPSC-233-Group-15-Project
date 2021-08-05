@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.chart.*?>
 <?import java.lang.*?>
@@ -9,7 +10,7 @@
 
 <TabPane prefHeight="450.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BudgetDisplayController">
    <tabs>
-      <Tab text="Budget Input">
+      <Tab closable="false" text="Budget Input">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -27,16 +28,17 @@
                   <Label layoutX="28.0" layoutY="50.0" text="Weekly Expenses(Name):" />
                   <Label layoutX="103.0" layoutY="250.0" text="Goal Amount:" />
                   <Label layoutX="70.0" layoutY="300.0" text="Number of Weeks:" />
-                  <Label fx:id="errorLabel" layoutX="50.0" layoutY="10.0" prefHeight="21.0" prefWidth="578.0" text="Error" textAlignment="CENTER" textFill="RED" visible="false" />
+                  <Label fx:id="errorLabel" alignment="CENTER" layoutX="50.0" layoutY="380.0" prefHeight="21.0" prefWidth="578.0" text="Error" textAlignment="CENTER" textFill="RED" visible="false" />
+                  <Label layoutX="79.0" layoutY="10.0" text="Welcome to the Budget Section of the app, please input your info below!" />
                </children>
             </Pane>
          </content>
       </Tab>
-      <Tab text="Budget Graph">
+      <Tab closable="false" text="Budget Graph">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <BarChart fx:id="budgetGraph" layoutY="6.0" prefHeight="400.0" prefWidth="661.0">
+                  <BarChart fx:id="budgetGraph" layoutY="6.0" legendVisible="false" prefHeight="400.0" prefWidth="661.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" fx:id="x" />
                     </xAxis>
@@ -44,6 +46,8 @@
                       <NumberAxis fx:id="y" side="LEFT" />
                     </yAxis>
                   </BarChart>
+                  <Label fx:id="goalLabel" layoutX="76.0" layoutY="4.0" text="The week the bar turned blue is the week you would achieve your goal!" textFill="#2f00ff" visible="false" />
+                  <Label fx:id="missLabel" layoutX="76.0" layoutY="4.0" text="Unfortunately, you will not achieve your goal in this time frame!" textFill="#ff9500" visible="false" />
                </children>
             </Pane>
          </content>
