@@ -47,10 +47,8 @@ public class ExpenseChartController {
      */
     public void displayChart() {
     	
-    	PieChart.Data[] expenseData = new PieChart.Data[list.getExpenseList().length];
+    	PieChart.Data[] expenseData = new PieChart.Data[list.getExpenseList().length]; // Here, both data-sets are created that will be used to feed data to the charts. 
     	XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-    	// Here, both data-sets are created that will be used to feed data to the 
-    	// charts.
     	series1.setName("Expense Value ($)"); 
     	for(int i = 0; i<list.getExpenseList().length; i++) {
     		Expenses expense = list.getExpenseList()[i];
@@ -80,9 +78,5 @@ public class ExpenseChartController {
     void initialize() {
     	assert barChart != null : "fx:id=\"barChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         assert expenseChart != null : "fx:id=\"expenseChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
-        
-    	
-    	
-        
     }
 }
