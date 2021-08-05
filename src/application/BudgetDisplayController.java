@@ -72,7 +72,7 @@ public class BudgetDisplayController  {
     	// Needs some work (May need to redo how Expenses in budgetDisplay work/ are inputted)***
     	try {
     		budgetGraph.getData().clear();
-	    	Income userIncome = new Income(Float.parseFloat(incomeText.getText()),Float.parseFloat(savingsText.getText()));
+	    	Income userIncome = new Income(Float.parseFloat(savingsText.getText()),Float.parseFloat(incomeText.getText()));
 	    	String[] expenseNames = expenseNameText.getText().split(",");
 	    	String[] expenseAmount = expenseAmountText.getText().split(",");
 	    	// Check to see if names and amounts are equivalent, if not display error label
@@ -104,9 +104,9 @@ public class BudgetDisplayController  {
     private void setData(Budget userBudget) {
     	 XYChart.Series<String, Double> data = new XYChart.Series<String, Double>();
     	 for(int week = 0; week < userBudget.getTimeToAchieve(); week++) {
-    		 userBudget.getInFlow().weeklyIncome(userBudget.getOutFlow());
     		 data.getData().add(new Data<String,Double>(Integer.toString(week),userBudget.calculateNetFlow()));
-    		 System.out.println(userBudget.calculateNetFlow());
+    		 userBudget.getInFlow().weeklyIncome(userBudget.getOutFlow());
+    		 
     	 } 
     	 budgetGraph.getData().add(data);
     }
