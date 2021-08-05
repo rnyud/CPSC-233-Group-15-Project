@@ -2,7 +2,12 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,13 +29,16 @@ public class ExpenseChartController {
 
     @FXML
     private URL location;
+    
+    @FXML
+    private BarChart<?, ?> barChart;
 
     @FXML
     private PieChart expenseChart;
     
     private ExpenseList list = new ExpenseList(2);
     
-    private boolean set = false;
+ 
     
     public void displayChart() {
     	
@@ -39,10 +47,27 @@ public class ExpenseChartController {
     		Expenses expense = list.getExpenseList()[i];
     		if(list.getExpenseList()[i]!=null) {
 	    		System.out.println(expense.getExpenseName());
-	    		expenseData[i] = new PieChart.Data(expense.getExpenseName(), expense.getExpenseValue());
+	    		expenseData[i] = new PieChart.Data(expense.getExpenseName() + ": $" +String.format("%.2f", expense.getExpenseValue()), expense.getExpenseValue());
     		}
     	}
     	expenseChart.setData(FXCollections.observableArrayList(expenseData));
+    	
+    	CategoryAxis xAxis    = new CategoryAxis();
+    	xAxis.setLabel("Expenses");
+
+    	NumberAxis yAxis = new NumberAxis();
+    	
+    	yAxis.setLabel("Expense Value ($)");
+    	barChart = new BarChart(xAxis, yAxis);
+    	XYChart.Series dataSeries1 = new XYChart.Series();
+    	dataSeries1.setName("2014");
+
+    	dataSeries1.getData().add(new XYChart.Data("Desktop", 178));
+    	dataSeries1.getData().add(new XYChart.Data("Phone"  , 65));
+    	dataSeries1.getData().add(new XYChart.Data("Tablet"  , 23));
+
+
+    	barChart.getData().add(dataSeries1);
     	
     	
     }
@@ -50,13 +75,13 @@ public class ExpenseChartController {
     
    public void setList(ExpenseList list) {
 	   this.list = list;
-	   set = true;
 	   displayChart();
    }
 
     @FXML
     void initialize() {
     	System.out.println("A");
+    	assert barChart != null : "fx:id=\"barChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         assert expenseChart != null : "fx:id=\"expenseChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         
     	
