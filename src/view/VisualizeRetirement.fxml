@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -18,24 +19,38 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="ageBox" alignment="CENTER" layoutX="179.0" layoutY="87.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current age:" />
-                  <TextField fx:id="monthlyBox" alignment="CENTER" layoutX="179.0" layoutY="133.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your monthly savings:" />
-                  <TextField fx:id="retAgeBox" alignment="CENTER" layoutX="179.0" layoutY="177.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your expected retirement age:" />
-                  <TextField fx:id="currentSavingsBox" alignment="CENTER" layoutX="179.0" layoutY="219.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current savings:" />
-                  <Label alignment="CENTER" layoutX="209.0" layoutY="250.0" prefHeight="34.0" prefWidth="239.0" text="What is your risk tolerance?">
+                  <TextField fx:id="ageBox" alignment="CENTER" layoutX="65.0" layoutY="137.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current age:" />
+                  <TextField fx:id="monthlyBox" alignment="CENTER" layoutX="64.0" layoutY="173.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your monthly contributions:" />
+                  <TextField fx:id="retAgeBox" alignment="CENTER" layoutX="65.0" layoutY="209.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your expected retirement age:" />
+                  <TextField fx:id="currentSavingsBox" alignment="CENTER" layoutX="65.0" layoutY="241.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current savings:" />
+                  <Label alignment="CENTER" layoutX="94.0" layoutY="266.0" prefHeight="34.0" prefWidth="239.0" text="What is your risk tolerance?">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="riskChoiceLow" layoutX="293.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#lowClicked" text="Low" />
-                  <CheckBox fx:id="riskChoiceMed" layoutX="291.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#medClicked" text="Medium" />
-                  <CheckBox fx:id="riskChoiceHigh" layoutX="291.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#highClicked" text="High" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="22.0" prefHeight="36.0" prefWidth="295.0" text="Retirement Planning Tool" textAlignment="JUSTIFY">
+                  <CheckBox fx:id="riskChoiceLow" layoutX="178.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#lowClicked" text="Low">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="System Bold" size="12.0" />
+                     </font></CheckBox>
+                  <CheckBox fx:id="riskChoiceMed" layoutX="176.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#medClicked" text="Medium">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></CheckBox>
+                  <CheckBox fx:id="riskChoiceHigh" layoutX="176.0" layoutY="365.0" mnemonicParsing="false" onMouseClicked="#highClicked" text="High">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></CheckBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="26.0" prefHeight="36.0" prefWidth="295.0" text="Retirement Planning Tool" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="submitButton" layoutX="129.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#submitted" text="Click here to submit your data, then click on the &quot;Graph&quot; tab to continue." />
+                  <Button fx:id="submitButton" layoutX="14.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#submitted" text="Click here to submit your data, then click on the &quot;Graph&quot; tab to continue." />
+                  <TextField fx:id="incomeBox" alignment="CENTER" layoutX="64.0" layoutY="94.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your weekly income: " />
+                  <Label fx:id="introLabel" alignment="TOP_LEFT" layoutX="415.0" layoutY="78.0" prefHeight="327.0" prefWidth="449.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
          </content>
@@ -44,24 +59,38 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="441.0" prefWidth="657.0">
                <children>
-                  <BarChart fx:id="retirementChart" layoutX="16.0" layoutY="50.0" prefHeight="334.0" prefWidth="428.0">
+                  <BarChart fx:id="retirementChart" layoutX="10.0" layoutY="55.0" prefHeight="376.0" prefWidth="431.0">
                     <xAxis>
-                      <CategoryAxis label="Years" prefHeight="16.0" prefWidth="292.0" side="BOTTOM" fx:id="x" />
+                      <CategoryAxis label="Years" prefHeight="40.0" prefWidth="332.0" side="BOTTOM" fx:id="x">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets></CategoryAxis>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="y" label="Money saved ($)" prefHeight="288.0" prefWidth="43.0" side="LEFT" />
+                      <NumberAxis fx:id="y" label="Money saved ($)" prefHeight="288.0" prefWidth="66.0" side="LEFT" />
                     </yAxis>
                   </BarChart>
-                  <Label layoutX="204.0" layoutY="14.0" prefHeight="36.0" prefWidth="262.0" text="Your Retirement Stats:">
+                  <Label layoutX="307.0" layoutY="14.0" prefHeight="36.0" prefWidth="275.0" text="Your Retirement Stats:">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label1" layoutX="444.0" layoutY="65.0" prefHeight="23.0" prefWidth="440.0" text="Label" />
-                  <Label fx:id="label2" layoutX="444.0" layoutY="111.0" prefHeight="17.0" prefWidth="442.0" text="Label" />
-                  <Label fx:id="label3" layoutX="444.0" layoutY="154.0" prefHeight="17.0" prefWidth="443.0" text="Label" />
-                  <Label fx:id="label4" layoutX="444.0" layoutY="194.0" prefHeight="17.0" prefWidth="445.0" text="Label" />
-                  <Label fx:id="label5" layoutX="444.0" layoutY="226.0" prefHeight="17.0" prefWidth="440.0" text="Label" />
+                  <Label fx:id="basedLabel" layoutX="450.0" layoutY="57.0" prefHeight="23.0" prefWidth="440.0" text="Based on your...">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Label>
+                  <Label fx:id="totalRetAmountLabel" layoutX="451.0" layoutY="209.0" prefHeight="17.0" prefWidth="442.0" text="At age:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="totalContLabel" layoutX="450.0" layoutY="237.0" prefHeight="17.0" prefWidth="443.0" text="Your total contributions:" />
+                  <Label fx:id="totalIntrLabel" layoutX="449.0" layoutY="265.0" prefHeight="17.0" prefWidth="445.0" text="Total compound interest/growth:" />
+                  <Label fx:id="expRetSpendLabel" layoutX="450.0" layoutY="308.0" prefHeight="17.0" prefWidth="440.0" text="When you retire, you can expect to spend:" />
+                  <Label fx:id="riskLabel" layoutX="449.0" layoutY="90.0" prefHeight="17.0" prefWidth="442.0" text="Risk level:" />
+                  <Label fx:id="expRetAgeLabel" layoutX="449.0" layoutY="113.0" prefHeight="17.0" prefWidth="442.0" text="Expected retirement age:" />
+                  <Label fx:id="currentAgeLabel" layoutX="450.0" layoutY="137.0" prefHeight="17.0" prefWidth="442.0" text="Current Age" />
+                  <Label fx:id="monthlyContLabel" layoutX="451.0" layoutY="161.0" prefHeight="17.0" prefWidth="442.0" text="Monthly contributions:" />
+                  <Label fx:id="yearsLastedLabel" layoutX="450.0" layoutY="334.0" prefHeight="17.0" prefWidth="440.0" text="This could last you:" />
                </children></AnchorPane>
          </content>
       </Tab>
