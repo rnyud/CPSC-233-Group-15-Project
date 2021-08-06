@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
@@ -19,26 +13,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RetirementController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RetirementController">
    <tabs>
       <Tab text="Input">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="ageBox" alignment="CENTER" layoutX="65.0" layoutY="137.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current age:" />
-                  <TextField fx:id="monthlyBox" alignment="CENTER" layoutX="64.0" layoutY="173.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your monthly contributions:" />
-                  <TextField fx:id="retAgeBox" alignment="CENTER" layoutX="65.0" layoutY="209.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your expected retirement age:" />
-                  <TextField fx:id="currentSavingsBox" alignment="CENTER" layoutX="65.0" layoutY="241.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current savings:" />
-                  <Label alignment="CENTER" layoutX="94.0" layoutY="266.0" prefHeight="34.0" prefWidth="239.0" text="What is your risk tolerance?">
+                  <TextField fx:id="ageBox" alignment="CENTER" layoutX="65.0" layoutY="130.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current age:" />
+                  <TextField fx:id="monthlyBox" alignment="CENTER" layoutX="65.0" layoutY="170.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your monthly contributions:" />
+                  <TextField fx:id="retAgeBox" alignment="CENTER" layoutX="65.0" layoutY="210.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your expected retirement age:" />
+                  <TextField fx:id="currentSavingsBox" alignment="CENTER" layoutX="65.0" layoutY="250.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your current savings:" />
+                  <Label alignment="CENTER" layoutX="94.0" layoutY="275.0" prefHeight="34.0" prefWidth="239.0" text="What is your risk tolerance?">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="riskChoiceLow" layoutX="178.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#lowClicked" text="Low">
+                  <CheckBox fx:id="riskChoiceLow" layoutX="176.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#lowClicked" text="Low">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></CheckBox>
-                  <CheckBox fx:id="riskChoiceMed" layoutX="176.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#medClicked" text="Medium">
+                  <CheckBox fx:id="riskChoiceMed" layoutX="176.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#medClicked" text="Medium">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></CheckBox>
@@ -51,8 +45,8 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="submitButton" layoutX="14.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#submitted" text="Click here to submit your data, then click on the &quot;Graph&quot; tab to continue." />
-                  <TextField fx:id="incomeBox" alignment="CENTER" layoutX="64.0" layoutY="94.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your weekly income: " />
+                  <Button fx:id="submitButton" layoutX="150.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#submitted" prefHeight="25.0" prefWidth="122.0" text="Submit" />
+                  <TextField fx:id="incomeBox" alignment="CENTER" layoutX="65.0" layoutY="90.0" maxWidth="300.0" prefWidth="300.0" promptText="Enter your weekly income: " />
                   <Label fx:id="introLabel" alignment="TOP_LEFT" layoutX="415.0" layoutY="78.0" prefHeight="327.0" prefWidth="449.0">
                      <font>
                         <Font size="17.0" />
@@ -86,18 +80,21 @@
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font></Label>
-                  <Label fx:id="totalRetAmountLabel" layoutX="451.0" layoutY="209.0" prefHeight="17.0" prefWidth="442.0" text="At age:">
+                  <Label fx:id="totalRetAmountLabel" layoutX="450.0" layoutY="210.0" prefHeight="17.0" prefWidth="442.0" text="At age:">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font></Label>
-                  <Label fx:id="totalContLabel" layoutX="450.0" layoutY="237.0" prefHeight="17.0" prefWidth="443.0" text="Your total contributions:" />
-                  <Label fx:id="totalIntrLabel" layoutX="449.0" layoutY="265.0" prefHeight="17.0" prefWidth="445.0" text="Total compound interest/growth:" />
-                  <Label fx:id="expRetSpendLabel" layoutX="450.0" layoutY="308.0" prefHeight="17.0" prefWidth="440.0" text="When you retire, you can expect to spend:" />
-                  <Label fx:id="riskLabel" layoutX="449.0" layoutY="90.0" prefHeight="17.0" prefWidth="442.0" text="Risk level:" />
-                  <Label fx:id="expRetAgeLabel" layoutX="449.0" layoutY="113.0" prefHeight="17.0" prefWidth="442.0" text="Expected retirement age:" />
-                  <Label fx:id="currentAgeLabel" layoutX="450.0" layoutY="137.0" prefHeight="17.0" prefWidth="442.0" text="Current Age" />
-                  <Label fx:id="monthlyContLabel" layoutX="451.0" layoutY="161.0" prefHeight="17.0" prefWidth="442.0" text="Monthly contributions:" />
-                  <Label fx:id="yearsLastedLabel" layoutX="450.0" layoutY="334.0" prefHeight="17.0" prefWidth="440.0" text="This could last you:" />
+                  <Label fx:id="totalContLabel" layoutX="450.0" layoutY="235.0" prefHeight="17.0" prefWidth="443.0" text="Your total contributions:" />
+                  <Label fx:id="totalIntrLabel" layoutX="450.0" layoutY="260.0" prefHeight="17.0" prefWidth="445.0" text="Total compound interest/growth:" />
+                  <Label fx:id="expRetSpendLabel" layoutX="450.0" layoutY="305.0" prefHeight="17.0" prefWidth="440.0" text="When you retire, you can expect to spend:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="riskLabel" layoutX="450.0" layoutY="90.0" prefHeight="17.0" prefWidth="442.0" text="Risk level:" />
+                  <Label fx:id="expRetAgeLabel" layoutX="450.0" layoutY="115.0" prefHeight="17.0" prefWidth="442.0" text="Expected retirement age:" />
+                  <Label fx:id="currentAgeLabel" layoutX="450.0" layoutY="140.0" prefHeight="17.0" prefWidth="442.0" text="Current Age" />
+                  <Label fx:id="monthlyContLabel" layoutX="450.0" layoutY="165.0" prefHeight="17.0" prefWidth="442.0" text="Monthly contributions:" />
+                  <Label fx:id="yearsLastedLabel" layoutX="450.0" layoutY="330.0" prefHeight="17.0" prefWidth="440.0" text="This could last you:" />
                </children></AnchorPane>
          </content>
       </Tab>
