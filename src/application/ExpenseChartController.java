@@ -24,7 +24,7 @@ import model.Expenses;
  * @author timof
  *
  */
-public class ExpenseChartController {
+public class ExpenseChartController extends BudgetDisplayController {
 
     @FXML
     private ResourceBundle resources;
@@ -66,8 +66,8 @@ public class ExpenseChartController {
     * time to display something.
     * @param list The ExpenseList input by the user.
     */
-   public void setList(ExpenseList list) {
-	   this.list = list;
+   public void setList() {
+	   this.list = super.getUserBudget().getOutFlow();
 	   displayChart();
    }
    

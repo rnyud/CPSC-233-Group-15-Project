@@ -49,13 +49,17 @@ public class MainMenu extends Application{
 		budget.setPrefWidth(401);
 		Button retirement = new Button("Retirement Plan");
 		retirement.setPrefWidth(401);
+		Button expenses = new Button("Expenses");
 		
 		budget.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
 					budget.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/VisualizeBudgetDisplay.fxml")));
-				} catch (IOException e) {
+					BudgetDisplayController budgetController = loader.getController();
+					
+					
+                } catch (IOException e) {
 					e.printStackTrace();
 				}             
             }
@@ -72,7 +76,20 @@ public class MainMenu extends Application{
             }
 		});
 		
-		v.getChildren().addAll(budget,retirement,title,info);
+		expenses.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+            public void handle(ActionEvent arg0) {
+                try {
+					expenses.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/ExpenseChart.fxml")));
+					ExpenseChartController expenseController = loader.getController();
+					expenseController.setList();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}             
+            }
+		});
+		
+		v.getChildren().addAll(budget,retirement,expenses,title,info);
 		return v;
 	
 	}
