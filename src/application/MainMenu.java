@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
@@ -32,6 +34,7 @@ public class MainMenu extends Application{
 	public VBox mainMenuView() {
 		VBox v = new VBox();
 		v.setAlignment(Pos.CENTER);
+		Label title = new Label("Budget Application");
 		Button budget = new Button("Budget + Expenses");
 		Button retirement = new Button("Retirement Plan");
 		budget.setOnAction(new EventHandler<ActionEvent>() {
@@ -48,13 +51,13 @@ public class MainMenu extends Application{
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
-					budget.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/VisualizeRetirement.fxml")));
+					retirement.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/VisualizeRetirement.fxml")));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}             
             }
 		});
-		v.getChildren().addAll(budget,retirement);
+		v.getChildren().addAll(budget,retirement,title);
 		return v;
 	
 	}
