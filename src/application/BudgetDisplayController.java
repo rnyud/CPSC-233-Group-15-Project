@@ -111,6 +111,7 @@ public class BudgetDisplayController extends MainMenu  {
 	    		userExpenses.addExpense(expense);
 	    	}
 	    	Budget userBudget = new Budget(userExpenses,userIncome);
+	    	super.setMainList(userExpenses);
 	    	userBudget.setGoal(Double.parseDouble(goalText.getText()));
 	    	userBudget.setTimeToAchieve(Double.parseDouble(timeText.getText()));
 	    	setData(userBudget);

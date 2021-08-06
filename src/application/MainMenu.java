@@ -18,12 +18,16 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.ExpenseList;
+import model.Expenses;
 /**
  * 
  * @author Manpreet,Rayner,Timofei
  *
  */
 public class MainMenu extends Application{
+	private ExpenseList list = new ExpenseList(2);
+	private Boolean a = false;
 	private Scene scene;
 	private Stage primaryStage = new Stage();
 	private FXMLLoader loader = new FXMLLoader();
@@ -48,15 +52,16 @@ public class MainMenu extends Application{
 		budget.setTranslateY(-50);
 		budget.setPrefWidth(401);
 		Button retirement = new Button("Retirement Plan");
+		retirement.setTranslateY(-25);
 		retirement.setPrefWidth(401);
+		Button expense = new Button("Expense");
+		expense.setPrefWidth(401);
 		budget.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
 					budget.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/VisualizeBudgetDisplay.fxml")));
 					BudgetDisplayController budgetController = loader.getController();
-					
-					
                 } catch (IOException e) {
 					e.printStackTrace();
 				}             
@@ -74,10 +79,27 @@ public class MainMenu extends Application{
             }
 		});
 		
+		expense.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+            public void handle(ActionEvent arg0) {
+                try {
+					expense.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/ExpenseChart.fxml")));
+					ExpenseChartController expenseController = loader.getController();
+					expenseController.setList(list);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}             
+            }
+		});
 		
-		v.getChildren().addAll(budget,retirement,title,info);
+		
+		v.getChildren().addAll(budget,retirement,expense,title,info);
 		return v;
 	
+	}
+	
+	public void setMainList(ExpenseList list) {
+		this.list=list;
 	}
 	
 	public static void main(String[] args) {

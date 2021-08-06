@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenseChartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenseChartController">
    <children>
-      <PieChart fx:id="expenseChart" prefHeight="500.0" prefWidth="500.0" title="Expenses by Percentage" />
-      <BarChart fx:id="barChart" layoutX="500.0" prefHeight="500.0" prefWidth="500.0" title="Expenses by Value">
+      <PieChart fx:id="expenseChart" layoutX="7.0" prefHeight="472.0" prefWidth="375.0" title="Expenses by Percentage" />
+      <BarChart fx:id="barChart" layoutX="382.0" prefHeight="472.0" prefWidth="381.0" title="Expenses by Value">
         <xAxis>
           <CategoryAxis label="Expenses (Names)" side="BOTTOM" />
         </xAxis>
@@ -16,5 +18,6 @@
           <NumberAxis label="Values ($)" side="LEFT" />
         </yAxis>
       </BarChart>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>

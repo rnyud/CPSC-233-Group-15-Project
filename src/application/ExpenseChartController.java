@@ -9,12 +9,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import model.ExpenseList;
@@ -24,7 +26,7 @@ import model.Expenses;
  * @author timof
  *
  */
-public class ExpenseChartController extends BudgetDisplayController {
+public class ExpenseChartController extends MainMenu {
 
     @FXML
     private ResourceBundle resources;
@@ -33,10 +35,31 @@ public class ExpenseChartController extends BudgetDisplayController {
     private URL location;
     
     @FXML
+    /**
+     * The bar chart that lists the expenses.
+     */
     private BarChart<String, Number> barChart;
 
     @FXML
+    /**
+     * The pie chart that lists the expenses.
+     */
     private PieChart expenseChart;
+    
+    @FXML
+    /**
+     * The button the user presses to go back.
+     */
+    private Button backButton;
+
+    @FXML
+    /**
+     * This method takes the user back to the main menu screen upon pushing the back button.
+     * @param event
+     */
+    void goBack(ActionEvent event) {
+    	backButton.getScene().setRoot(super.mainMenuView());
+    }
     
     private ExpenseList list;
     
@@ -78,5 +101,6 @@ public class ExpenseChartController extends BudgetDisplayController {
     void initialize() {
     	assert barChart != null : "fx:id=\"barChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
         assert expenseChart != null : "fx:id=\"expenseChart\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
+        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ExpenseChart.fxml'.";
     }
 }
