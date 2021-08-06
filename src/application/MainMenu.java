@@ -13,6 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 /**
  * 
@@ -35,8 +39,17 @@ public class MainMenu extends Application{
 		VBox v = new VBox();
 		v.setAlignment(Pos.CENTER);
 		Label title = new Label("Budget Application");
+		title.setFont(Font.font("System",FontWeight.BOLD, 20));
+		title.setTextFill(Color.BLACK);
+		title.setTranslateY(-250);
+		Label info = new Label("Please select one of the features below to start:");
+		info.setTranslateY(-200);
 		Button budget = new Button("Budget + Expenses");
+		budget.setTranslateY(-50);
+		budget.setPrefWidth(401);
 		Button retirement = new Button("Retirement Plan");
+		retirement.setPrefWidth(401);
+		
 		budget.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
             public void handle(ActionEvent arg0) {
@@ -47,6 +60,7 @@ public class MainMenu extends Application{
 				}             
             }
 		});
+		
 		retirement.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
             public void handle(ActionEvent arg0) {
@@ -57,7 +71,8 @@ public class MainMenu extends Application{
 				}             
             }
 		});
-		v.getChildren().addAll(budget,retirement,title);
+		
+		v.getChildren().addAll(budget,retirement,title,info);
 		return v;
 	
 	}
