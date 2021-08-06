@@ -25,6 +25,8 @@ import model.Expenses;
  * @author Manpreet,Rayner,Timofei
  *
  */
+
+
 public class MainMenu extends Application{
 	private ExpenseList list = new ExpenseList(2);
 	private Boolean a = false;
@@ -39,6 +41,11 @@ public class MainMenu extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	
+	/**
+	 * Here is the main GUI the user is faced with at the outset
+	 * @return Nothing
+	 */
 	public VBox mainMenuView() {
 		VBox v = new VBox();
 		v.setAlignment(Pos.CENTER);
@@ -48,27 +55,26 @@ public class MainMenu extends Application{
 		title.setTranslateY(-250);
 		Label info = new Label("Please select one of the features below to start:");
 		info.setTranslateY(-200);
-		Button budget = new Button("Budget + Expenses");
+		Button budget = new Button("Budget"); //This button takes the user to the budget screen.
 		budget.setTranslateY(-50);
 		budget.setPrefWidth(401);
-		Button retirement = new Button("Retirement Plan");
+		Button retirement = new Button("Retirement Plan"); // This button takes the user to the retirement screen.
 		retirement.setTranslateY(-25);
 		retirement.setPrefWidth(401);
-		Button expense = new Button("Expense");
+		Button expense = new Button("Expense"); // This button takes the user to the expenses screen where the input expenses are shown (Blank otherwise)
 		expense.setPrefWidth(401);
-		budget.setOnAction(new EventHandler<ActionEvent>() {
+		budget.setOnAction(new EventHandler<ActionEvent>() { // Here the user is taken to the Budget screen upon clicking the button.
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
 					budget.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/VisualizeBudgetDisplay.fxml")));
-					BudgetDisplayController budgetController = loader.getController();
                 } catch (IOException e) {
 					e.printStackTrace();
 				}             
             }
 		});
 		
-		retirement.setOnAction(new EventHandler<ActionEvent>() {
+		retirement.setOnAction(new EventHandler<ActionEvent>() { // Here the user is taken to the Retirement screen upon clicking the button.
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
@@ -79,13 +85,13 @@ public class MainMenu extends Application{
             }
 		});
 		
-		expense.setOnAction(new EventHandler<ActionEvent>() {
+		expense.setOnAction(new EventHandler<ActionEvent>() { // Here the user is taken to the Expenses screen upon clicking the button.
 		    @Override
             public void handle(ActionEvent arg0) {
                 try {
 					expense.getScene().setRoot((Parent)loader.load(new FileInputStream("src/view/ExpenseChart.fxml")));
 					ExpenseChartController expenseController = loader.getController();
-					expenseController.setList(list);
+					expenseController.setList(list); //The list, taken from the Budget screen or the default, is set to the controller.
 				} catch (IOException e) {
 					e.printStackTrace();
 				}             
@@ -97,11 +103,19 @@ public class MainMenu extends Application{
 		return v;
 	
 	}
-	
+	/**
+	 * This method sets the list that will be used by the expenses controller, taking it out of
+	 * the budget through inheritance and later placing it into the ExpenseChartController
+	 * @param list The ExpenseList object
+	 */
 	public void setMainList(ExpenseList list) {
 		this.list=list;
 	}
 	
+	/**
+	 * The main method
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Application.launch(args);
 	}

@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenseChartController">
    <children>
       <PieChart fx:id="expenseChart" layoutX="7.0" prefHeight="472.0" prefWidth="375.0" title="Expenses by Percentage" />
-      <BarChart fx:id="barChart" layoutX="382.0" layoutY="2.0" prefHeight="472.0" prefWidth="381.0" title="Expenses by Value">
+      <BarChart fx:id="barChart" layoutX="382.0" prefHeight="472.0" prefWidth="381.0" title="Expenses by Value">
         <xAxis>
           <CategoryAxis label="Expenses (Names)" side="BOTTOM" />
         </xAxis>
