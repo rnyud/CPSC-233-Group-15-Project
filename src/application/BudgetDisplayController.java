@@ -122,6 +122,13 @@ public class BudgetDisplayController extends MainMenu  {
     
     	
     }
+    /**
+     * Getter method for the Budget object created by user input
+     * @return userBudget
+     */
+    public Budget getUserBudget() {
+    	return userBudget;
+    }
     
     /**
      * Sets the data in the bar graph using the budget object for its Y values
@@ -154,6 +161,7 @@ public class BudgetDisplayController extends MainMenu  {
     		 missLabel.setVisible(true);
     	 }
     }
+    
     
     /**
      * Method takes you back to the main VBox in Main Menu after clicking the back button
