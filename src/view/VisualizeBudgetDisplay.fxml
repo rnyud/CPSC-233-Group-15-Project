@@ -34,6 +34,7 @@
                         <Font name="Arial Black" size="14.0" />
                      </font></Label>
                   <Label layoutX="15.0" layoutY="350.0" prefHeight="25.0" prefWidth="267.0" text="(Click the Graph after submitting)" />
+                  <Button fx:id="backButton" layoutX="450.0" layoutY="345.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="70.0" text="Back" />
                </children>
             </Pane>
          </content>

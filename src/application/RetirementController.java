@@ -64,6 +64,9 @@ public class RetirementController extends RetirementPlan{
     private Button submitButton;
     
     @FXML
+    private Button backButton;
+    
+    @FXML
     private BarChart<String, Float> retirementChart;
     
     @FXML
@@ -228,8 +231,16 @@ public class RetirementController extends RetirementPlan{
 		String yearsLastedString = String.format(("%.2f"), yearsLasted);
 		yearsLastedLabel.setText("This amount could last " + yearsLastedString + " years after retirement based on the above estimate.");
     }
-
-
+    
+    /**
+     * Method takes you back to the main VBox in Main Menu after clicking the back button
+     * @param event
+     */
+    @FXML
+    void goBack(ActionEvent event) {
+    	backButton.getScene().setRoot(super.mainMenuView());
+    }
+    
     @FXML
     /**
      * Initializer

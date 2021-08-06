@@ -1,4 +1,10 @@
 package model;
+
+import application.MainMenu;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 /**
  * This class provides the logic for the RetirementController class,
  * and also works for text-based version as well.
@@ -6,7 +12,7 @@ package model;
  * @author Rayner
  *
  */
-public class RetirementPlan {
+public class RetirementPlan extends MainMenu{
 	private int age;
 	private double investmentRate;
 	private float yearlySavings;
@@ -264,5 +270,5 @@ public class RetirementPlan {
 		return yearsLasted;
 		
 	}
-	
+
 }

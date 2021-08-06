@@ -23,7 +23,7 @@ import model.Income;
  * @author ManpreetM1
  *
  */
-public class BudgetDisplayController  {
+public class BudgetDisplayController extends MainMenu  {
 	
 	private Budget userBudget;
 	
@@ -35,6 +35,9 @@ public class BudgetDisplayController  {
 
     @FXML
     private Button clearButton;
+    
+    @FXML
+    private Button backButton;
 
     @FXML
     private Label errorLabel;
@@ -151,6 +154,16 @@ public class BudgetDisplayController  {
     		 missLabel.setVisible(true);
     	 }
     }
+    
+    /**
+     * Method takes you back to the main VBox in Main Menu after clicking the back button
+     * @param event
+     */
+    @FXML
+    void goBack(ActionEvent event) {
+    	backButton.getScene().setRoot(super.mainMenuView());
+    }
+    
     /**
      * Initializes the GUI and sets the labels for the axises on the bar graph
      */
