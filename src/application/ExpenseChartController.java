@@ -66,8 +66,8 @@ public class ExpenseChartController extends BudgetDisplayController {
     * time to display something.
     * @param list The ExpenseList input by the user.
     */
-   public void setList() {
-	   this.list = super.getUserBudget().getOutFlow();
+   public void setList(ExpenseList list) {
+	   this.list = list;
 	   displayChart();
    }
    
