@@ -81,11 +81,18 @@ public class RetirementPlan extends MainMenu{
 	}
 	// The upcoming setters and getters use the same constraints as the constructors
 	
-	// Getter for current age
+	/**
+	 * Getter for current age
+	 * @return age
+	 */
 	public int getAge() {
 		return age;
 	}
-	// Setter for current age
+	
+	/**
+	 * Setter for current age.
+	 * @param Age, curent age.
+	 */
 	public void setAge(int Age) {
 		if (Age >= 1) {
 		this.age = Age;
@@ -94,11 +101,19 @@ public class RetirementPlan extends MainMenu{
 			this.age = 1;
 		}
 	}
-	// Getter for investment rate of return
+	
+	/**
+	 * Getter for investment rate of return.
+	 * @return investmentRate
+	 */
 	public double getInvestmentRate() {
 		return investmentRate;
 	}
-	//Setter for investment rate of return
+	
+	/**
+	 * Setter for investment rate of return.
+	 * @param investmentRate
+	 */
 	public void setInvestmentRate(double investmentRate) {
 		if (investmentRate >= 0) {
 		this.investmentRate = investmentRate;
@@ -107,11 +122,18 @@ public class RetirementPlan extends MainMenu{
 			this.investmentRate = 0;
 		}
 	}
-	// Getter for yearly savings
+	/**
+	 * Getter for yearly savings.
+	 * @return yearlySavings
+	 */
 	public float getYearlySavings() {
 		return yearlySavings;
 	}
-	// Setter for yearly savings
+	
+	/**
+	 * Setter for yearly savings.
+	 * @param yearlySavings
+	 */
 	public void setYearlySavings(float yearlySavings) {
 		if (yearlySavings >= 0) {
 		this.yearlySavings = yearlySavings;
@@ -121,11 +143,18 @@ public class RetirementPlan extends MainMenu{
 		}
 	}
 	
-	// Getter for expected age of retirement
+	/**
+	 * Getter for expected age of retirement.
+	 * @return retirementage
+	 */
 	public int getRetirementage() {
 		return retirementage;
 	}
-	// Setter for expected age of retirement
+	
+	/**
+	 * Setter for expected age of retirement
+	 * @param retirementage
+	 */
 	public void setRetirementage(int retirementage) {
 		if(retirementage > age) {
 		this.retirementage = retirementage;
@@ -134,11 +163,19 @@ public class RetirementPlan extends MainMenu{
 			this.retirementage = age + 1;
 		}
 	}
-	// Getter for initial savings
+	
+	/**
+	 * Getter for initial savings.
+	 * @return initialSavings
+	 */
 	public float getInitialSavings() {
 		return initialSavings;
 	}
-	// Setter for initial savings
+	
+	/**
+	 * Setter for initial savings.
+	 * @param initialSavings
+	 */
 	public void setInitialSavings(float initialSavings) {
 		if (initialSavings >= 0) {
 		this.initialSavings = initialSavings;
@@ -153,6 +190,7 @@ public class RetirementPlan extends MainMenu{
 	 * Adds contributions after compounding them, therefore it is not just compounding the initial amount of savings
 	 * The code has been refactored to use other methods to do the printing.
 	 * Also provides the total amount the user has contributed, and how much interest/growth they have gained
+	 * @return yearAmount
 	 */
 	public float calculateYearlyGrowth() {
 		
