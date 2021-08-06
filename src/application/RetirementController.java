@@ -1,6 +1,5 @@
 package application;
 import java.io.IOException;
-// test
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
