@@ -26,9 +26,8 @@ import model.Expenses;
  *
  */
 
-
 public class MainMenu extends Application{
-	private ExpenseList list = new ExpenseList(2);
+	private ExpenseList list;
 	private Boolean a = false;
 	private Scene scene;
 	private Stage primaryStage = new Stage();
