@@ -24,6 +24,7 @@ import model.Expenses;
 /**
  * This class is a controller for the "ExpenseChart.fxml" GUI. 
  * It extends MainMenu so as to gain access to information from the other controllers.
+ * 
  * @author Timofei
  *
  */
