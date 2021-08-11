@@ -183,8 +183,10 @@ public class RetirementController extends RetirementPlan{
 		for (int yearCounter = 2; yearCounter <= yearsToRetirement; yearCounter ++ ) {
 
 	        if (yearCounter >= 2) {
+	        	// Add the yearly savings to the sum total
 				yearAmount = yearAmount + this.getYearlySavings();
 				}
+	        	// Growth calculation
 				yearAmount = growth(yearAmount);
 				// Next line also adapted from the Oracle documentation
 		        retirementSeries.getData().add(new XYChart.Data<String, Float>(Integer.toString(yearCounter), yearAmount));
@@ -194,7 +196,7 @@ public class RetirementController extends RetirementPlan{
 					float totalContribution = totalContributions(yearsToRetirement, initialSavingsForDisplay);
 					// Next line also adapted from the link above
 					retirementChart.getData().addAll(retirementSeries);
-					
+					// Finally, set up all the labels with the necessary data after the calculations are finished
 					setLabelText(yearCounter, yearAmount, totalContribution, yearlyIncome);
 
 					}
@@ -205,6 +207,7 @@ public class RetirementController extends RetirementPlan{
     
     /**
      * This method adds text to all but one of the labels in the GUI (intro label; which is set on startup)
+     * in order to show the user their retirement data
      * @param yearCounter, years of compounding
      * @param yearAmount, final amount after compounding
      * @param totalContribution, total contributions excluding growth
@@ -224,9 +227,9 @@ public class RetirementController extends RetirementPlan{
 			riskLabel.setText("Risk level: Low (3%/yr average returns)");
 			
 		}
+		// Set the labels that show the user their retirement stats
 		currentAgeLabel.setText("Current Age: " + this.getAge());
-		monthlyContLabel.setText("Monthly contributions: $" + (this.getYearlySavings()/12));
-		
+		monthlyContLabel.setText("Monthly contributions: $" + (this.getYearlySavings()/12));	
 		totalRetAmountLabel.setText("At age " + (yearCounter + this.getAge()) + ", you could have a total of $" + yearAmount + " saved for retirement");
 		totalContLabel.setText("Your total contributions (initial savings and yearly contributions) = $" + totalContribution);
 		totalIntrLabel.setText("Total compound interest/growth = $" + (yearAmount - totalContribution));

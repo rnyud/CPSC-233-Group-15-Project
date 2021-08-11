@@ -3,7 +3,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
- * 
+ * This is the class that runs the text based application (iteration 1)
  * @author Manpreet
  *
  */

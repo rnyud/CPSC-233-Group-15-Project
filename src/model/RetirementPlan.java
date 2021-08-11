@@ -135,6 +135,7 @@ public class RetirementPlan extends MainMenu{
 	 * @param yearlySavings
 	 */
 	public void setYearlySavings(float yearlySavings) {
+		// Must be greater than 0
 		if (yearlySavings >= 0) {
 		this.yearlySavings = yearlySavings;
 		}
