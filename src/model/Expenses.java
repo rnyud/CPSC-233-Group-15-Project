@@ -1,8 +1,9 @@
 package model;
 /**
+ * This class functions to create an Expenses object that will contain two vital
+ * pieces of information, the value of a given expense and its name. 
  * 
- * @author timof
- *
+ * @author Timofei
  *
  */
 public class Expenses {
