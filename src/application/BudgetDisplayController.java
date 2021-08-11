@@ -93,29 +93,40 @@ public class BudgetDisplayController extends MainMenu  {
     @FXML
     void submitText(ActionEvent event) {
     	try {
+    		// Sets all labels invisible after clicking submit to avoid showing them at the wrong times
     		goalLabel.setVisible(false);
     		missLabel.setVisible(false);
+    		
     		budgetGraph.getData().clear();
+            // Creates a new income object based on the info user entered in textfields
 	    	Income userIncome = new Income(Float.parseFloat(incomeText.getText()),Float.parseFloat(savingsText.getText()));
-	    	String[] expenseNames = expenseNameText.getText().split(",");
+	    	
+	    	// Creates 2 new arrays for the different names and amounts of expenses entered by user and splits them by comma
+	    	String[] expenseNames = expenseNameText.getText().split(",");  
 	    	String[] expenseAmount = expenseAmountText.getText().split(",");
-	    	// Check to see if names and amounts are equivalent, if not display error label
+	    	
+	    	// Check to see if names and amounts are equivalent, if not display error label showing specific error
 	    	if(expenseNames.length != expenseAmount.length) {
 	    		errorLabel.setText("Error: Number of expense Names and Number of expense Amounts don't match");
 	    		errorLabel.setVisible(true);
 	    		clearText(null);
 	    	}
+	    	
+	    	// Creates a new Expenselist based on array for expense names and amounts from previous blocks of code
 	    	ExpenseList userExpenses = new ExpenseList(expenseAmount.length);
 	    	for(int i = 0; i < expenseNames.length; i++) {
 	    		Expenses expense = new Expenses(expenseNames[i],Float.parseFloat(expenseAmount[i]));
 	    		userExpenses.addExpense(expense);
 	    	}
+	    	
+	    	// Creates a new budget using the previous ExpenseList and Income objects
 	    	Budget userBudget = new Budget(userExpenses,userIncome);
 	    	super.setMainList(userExpenses);
 	    	userBudget.setGoal(Double.parseDouble(goalText.getText()));
 	    	userBudget.setTimeToAchieve(Double.parseDouble(timeText.getText()));
 	    	setData(userBudget);
     	} catch(NumberFormatException e) {
+    		// shows error message if info is empty or incorrect in one of the textfields in the try block
     		errorLabel.setText("Error: At least one text field is empty or is of incorrect type");
     		errorLabel.setVisible(true);
     		clearText(null);
@@ -138,6 +149,7 @@ public class BudgetDisplayController extends MainMenu  {
     private void setData(Budget userBudget) {
     	 XYChart.Series<String, Double> series = new XYChart.Series<String, Double>();
     	 for(int week = 0; week < userBudget.getTimeToAchieve(); week++) {
+    		 // updates the userBudgets savings amount every week for the y axis and takes in the week loop variable for the x axis
     		 XYChart.Data<String, Double> data = new XYChart.Data<String, Double>(Integer.toString(week),(double)userBudget.getInFlow().getSavings());
     			// Changes color of bar when goal is met(Not my code)
     			// Got from https://www.tabnine.com/code/java/methods/javafx.scene.Node/setStyle 
@@ -156,6 +168,7 @@ public class BudgetDisplayController extends MainMenu  {
     		 series.getData().add(data);
     		 userBudget.getInFlow().weeklyIncome(userBudget.getOutFlow());
     	 } 
+    	 // adds all of the data in the series from above into the bar chart
     	 budgetGraph.getData().add(series);
     	 budgetGraph.getStylesheets().add(getClass().getResource("colored-chart.css").toExternalForm());
     	 if(!goalLabel.isVisible()) {
@@ -186,6 +199,7 @@ public class BudgetDisplayController extends MainMenu  {
         assert savingsText != null : "fx:id=\"savingsText\" was not injected: check your FXML file 'VisualizeBudgetDisplay.fxml'.";
         assert budgetGraph != null : "fx:id=\"budgetGraph\" was not injected: check your FXML file 'VisualizeBudgetDisplay.fxml'.";
 
+        // Sets the x-axis and y-axis labels in the bar chart at the start of initialization
         budgetGraph.getXAxis().setLabel("Weeks");
         budgetGraph.getYAxis().setLabel("Dollar Amount in Savings");
     }
