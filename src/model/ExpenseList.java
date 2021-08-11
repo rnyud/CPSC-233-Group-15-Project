@@ -1,5 +1,9 @@
 package model;
 /**
+ * This class functions to contain a lists of all of the Expenses
+ * the user will be inputting. Through it the user can get access to
+ * each individual expense as well as examine data such as the sum total
+ * of the expense values within the list.
  * 
  * @author timof
  * 
