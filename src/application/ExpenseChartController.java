@@ -79,7 +79,7 @@ public class ExpenseChartController extends MainMenu {
 	    	expenseData[i] = new PieChart.Data(expense.getExpenseName() + ": $" +String.format("%.2f", expense.getExpenseValue()), expense.getExpenseValue());
     		
     	}
-    	expenseChart.setData(FXCollections.observableArrayList(expenseData));
+    	expenseChart.setData(FXCollections.observableArrayList(expenseData)); // Here the data for both charts is set.
     	barChart.getData().add(series1);
     }
     
