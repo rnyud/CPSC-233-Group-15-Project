@@ -103,14 +103,16 @@ public class Budget {
 	 * @param weekAchieved, int representing the week they achieved their goal
 	 */
 	public void printResult(boolean achieved, int weekAchieved) {
+		
+		// If not achieved print out the percent towards the goal and the amount user needs to change their budget by
 		if(!achieved) {
 			System.out.println("You won't be able to reach your goal!");
 			System.out.println("You would only reach " + (int)((calculateNetFlow()/goal)*100) 
 			+ " percent of the way there!");
 			System.out.println("You would need to increase your income or decrease \nyour spending by " 
 			+ getRemainingWeekly() + " every week!\n");
-		} else {
-			System.out.println("You will achieve your goal by Week:" + weekAchieved + "\n");
+		} else {   
+			System.out.println("You will achieve your goal by Week:" + weekAchieved + "\n"); // Otherwise, print out the week it was achieved
 		}
 	}
 	
@@ -123,6 +125,8 @@ public class Budget {
 		int weekAchieved = -1;
 		System.out.println("\nCalculating amount gained over "+ (int)timeToAchieve +" weeks...\n\n" +
 		"---------------------------------");
+		
+		// Loops through every week showing change in savings and checks if and when goal is achieved
 		for(int i = 0; i < timeToAchieve; i++) {
 			inFlow.weeklyIncome(outFlow);
 			if(inFlow.getSavings() >= goal && weekAchieved == -1) {
@@ -131,11 +135,14 @@ public class Budget {
 			System.out.println("Week " + i + ": | Amount in savings = " + 
 		    inFlow.getSavings());
 		}
+		
 		System.out.println("---------------------------------");
+		
+		// If the week achieved is not the same as the initial value, call the print result method with true and the week achieved
 		if(weekAchieved > -1) {
-			printResult(true,weekAchieved);
+			printResult(true,weekAchieved);	
 		} else {
-			printResult(false,0);
+			printResult(false,0);  // Otherwise, call the print result method with a false to indicate goal wasn't achieved
 		}
 	}
 }
