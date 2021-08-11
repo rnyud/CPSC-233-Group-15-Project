@@ -5,7 +5,7 @@ package model;
  * each individual expense as well as examine data such as the sum total
  * of the expense values within the list.
  * 
- * @author timof
+ * @author Timofei
  * 
  */
 public class ExpenseList {
