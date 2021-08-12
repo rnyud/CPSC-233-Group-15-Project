@@ -1,5 +1,9 @@
 package model;
 /**
+ * This class contains all of the methods to create and manipulate a budget object.
+ * It has its own ExpenseList object and Income objects to represent total costs
+ * and income + savings, it also has a goal and time frame variable for the user to
+ * set in order to create a fully working budget simulation.
  * 
  * @author Manpreet
  *
