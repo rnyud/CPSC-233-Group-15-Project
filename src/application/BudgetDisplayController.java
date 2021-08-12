@@ -19,7 +19,8 @@ import model.ExpenseList;
 import model.Expenses;
 import model.Income;
 /**
- * 
+ * This class is a controller for the VisualizeBudgetDisplay.fxml file for the GUI.
+ * It extends the MainMenu class to easily switch scenes back to the main menu using a back button.
  * @author ManpreetM1
  *
  */

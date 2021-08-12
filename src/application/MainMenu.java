@@ -22,6 +22,7 @@ import model.ExpenseList;
 import model.Expenses;
 /**
  * 
+ * This class is where the main application is run and where all of the other windows/scenes are loaded through files.
  * @author Manpreet,Rayner,Timofei
  *
  */
@@ -33,6 +34,9 @@ public class MainMenu extends Application{
 	private Stage primaryStage = new Stage();
 	private FXMLLoader loader = new FXMLLoader();
 	
+	/**
+	 * Overridden start method which sets the stage to the primary main menu scene
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Scene scene = new Scene(mainMenuView(),750,500);
@@ -43,7 +47,7 @@ public class MainMenu extends Application{
 	
 	/**
 	 * Here is the main GUI the user is faced with at the outset
-	 * @return Nothing
+	 * @return v, VBox object which represents the main menu of our application
 	 */
 	public VBox mainMenuView() {
 		VBox v = new VBox();
